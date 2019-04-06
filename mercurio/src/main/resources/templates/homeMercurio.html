@@ -1,4 +1,6 @@
-<html>
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -26,28 +28,40 @@
       			</div>
       			
       		</div>
-      		<div class="login col s6 card-panel teal lighten-4">
-     			<!-- <div class="row"> -->
-				   	<div class="input-field col s4">
-			   			<div class="row">
-						  <div class="input-field col s12">
-						    <input value="Nome" id="first_name1" type="text" class="validate">
-						    <label class="active" for="first_name2">Nome</label>
-				    	  </div>
-					    </div>
-				   	</div>
-				   	<div class="input-field col s4">
-			   			<div class="row">
-						  <div class="input-field col s12">
-						    <input value="Senha" id="first_name2" type="text" class="validate">
-						    <label class="active" for="first_name2">Senha</label>
-				    	  </div>
-					    </div>
-				   	</div>
-					<div class="input-field col s3 button waves-effect waves-light btn">Entrar</div>      			  		
-				<!-- </div> -->
-				      		
+      		<div class="col s6">
+	      		<div class="login col s12 card-panel teal lighten-4">
+		      		<div class="subLogin row">
+					   	<div class="input-field col s4 campoLogin">
+				   			<div class="row">
+							  <div class="input-field col s12 campoLinha">
+							    <input value="Nome" id="first_name1" type="text" class="validate">
+							    <label class="active" for="first_name2">Nome</label>
+					    	  </div>
+						    </div>
+					   	</div>
+					   	<div class="input-field col s4 campoLogin">
+				   			<div class="row">
+							  <div class="input-field col s12 campoLinha">
+							    <input value="Senha" id="first_name2" type="text" class="validate">
+							    <label class="active" for="first_name2">Senha</label>
+					    	  </div>
+						    </div>
+					   	</div>
+						<div class="btn entrar">
+							Entrar
+						</div>
+					</div>
+					<!-- <div class="row"> -->
+						<h6 class="linkCadastrar">
+							<a href=/cadastrar>Ainda nao tem conta? Cadastre-se</a>
+						</h6>
+						
+      						
+      					 
+					<!-- </div> -->
+				</div>      		
       		</div>
+      		
 	      </div>
 
 	      

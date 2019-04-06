@@ -2,20 +2,30 @@
 <html xmlns:th="http://thymeleaf.org"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-	<title>Pessoas</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+	<title>Cadastro</title>
 </head>	  
 <body>
-
-	<h1>Cadastro de Pessoas:</h1>
-	<form method="post">
-		Nome:<input type="text" value="" name="nome">
-		CPF:<input type="text" value="" name="cpf">
-		Nascimento:<input type="date" value="" name="nascimento">
-		Celular:<input type="text" value="" name="celular">
-		Telefone:<input type="text" value="" name="telefone">
-		
-		<button type="submit">Cadastrar</button>
-	</form>
+<div  class="row">
+	<div class="container blue-grey lighten-4 pagina">
+		<h4>Cadastro de Pessoas:</h4>
+		<form method="post">
+			Nome:<input type="text" value="" name="nome">
+			CPF:<input type="text" value="" name="cpf">
+			Nascimento:<input type="date" value="" name="nascimento">
+			Celular:<input type="text" value="" name="celular">
+			Telefone:<input type="text" value="" name="telefone">
+			
+			<div class="btn entrar">Cadastrar</div>
+		</form>
+	</div>
+</div>
 	
 	
 </body>

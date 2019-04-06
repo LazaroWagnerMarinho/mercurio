@@ -18,14 +18,14 @@ import com.tranporteMercadoria.mercurio.repository.PessoasRepository;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping(value="/mer")
+@RequestMapping(value="/mercurio")
 
 public class PessoasResource {
 	
 	@Autowired
 	PessoasRepository pessoasRepository;
 	
-	@GetMapping("listarPessoas")
+	@GetMapping("/listarPessoas")
 	public List<cadastroPessoas> listacadastroPessoas(){
 		return pessoasRepository.findAll();
 	}
@@ -35,7 +35,7 @@ public class PessoasResource {
 		return pessoasRepository.save(pessoas);
 	}
 	
-	@DeleteMapping("excluirPessoas")
+	@DeleteMapping("/excluirPessoas")
 	public void deletaPessoas(@RequestBody @Valid cadastroPessoas deletaPessoas) {
 		pessoasRepository.delete(deletaPessoas);
 	}

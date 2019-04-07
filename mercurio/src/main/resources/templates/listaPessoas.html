@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	  
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+   <link type="text/css" rel="stylesheet" href="materialize/css/home.css">
+	<title>Lista de pessoas</title>
+</head>
+<body>
+	<div class="container">
+		<div th:each="listaPessoa : ${listaPessoa}">
+			<div class="row">
+				<p><span th:text="${listaPessoa.id}"></span></p>
+				<p><span th:text="${listaPessoa.nome}"></span></p>
+				<p><span th:text="${listaPessoa.cpf}"></span></p>
+				<p><span th:text="${listaPessoa.nascimento}"></span></p>
+				<p><span th:text="${listaPessoa.celular}"></span></p>
+				<p><span th:text="${listaPessoa.telefone}"></span></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

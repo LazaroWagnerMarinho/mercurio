@@ -1,3 +1,6 @@
+.paginaHome{
+	background-color:#95a5a6
+}
 .textoFonte{
 	text-align: justify;	
 }
@@ -8,7 +11,7 @@
 
 .subLogin{
 	margin-bottom: 0px;
-    height: 80px;
+    height: 90px;
 }
 
 .campoLogin{

@@ -9,19 +9,53 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!--Import materialize.css-->
 	<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="materialize/css/cadastro.css">
 	<title>Cadastro</title>
 </head>	  
-<body class="blue-grey lighten-4">
+<body class="blue-grey lighten-4 espaco">
 <div  class="row">
-	<div class="container blue-grey lighten-4 pagina">
-		<h4>Cadastro de Pessoas:</h4>
+	<div class="blue-grey lighten-4 pagina">
+	<h4>Cadastro de Pessoas:</h4>
 		<form method="post">
-			Nome:<input type="text" value="" name="nome">
-			CPF:<input type="text" value="" name="cpf">
-			Nascimento:<input type="date" value="" name="nascimento">
-			Celular:<input type="text" value="" name="celular">
-			Telefone:<input type="text" value="" name="telefone">
+ 			<div class="row cadastro espaco">
+	      		<div class="com s12">
+	      			<div class="col s3 borda dadosPessoas">
+	      				<div class="row"><h5>Dados Pessoas</h5></div>
+						Nome:<input type="text" value="" name="nome">
+						CPF:<input type="text" value="" name="cpf">
+						Nascimento:<input type="date" value="" name="nascimento">
+						Celular:<input type="text" value="" name="celular">
+						Telefone:<input type="text" value="" name="telefone">
+					</div>
+					<div class="col s4 borda localização">
+						<div class="row"><h5>Localizacao</h5></div>
+						CEP:<input type="text" value="" name="cep">
+						<div class="col s7">
+							Endereco:<input type="text" value="" name="endereço">
+						</div>
+						<div class="col s5">
+							N:<input type="date" value="" name="numero">
+						</div>
+						Complemto:<input type="text" value="" name="complemto">
+						Bairro:<input type="text" value="" name="bairro">
+						<div class="col s9">
+							Cidade:<input type="text" value="" name="cidade">
+						</div>
+						<div class="col s3">
+							UF:<input type="text" value="" name="uf">
+						</div>
+					</div>
+					<div class="col s3 borda conta">
+						<div class="row"><h5>Conta</h5></div>
+						E-mail:<input type="text" value="" name="email">
+						Senha:<input type="text" value="" name="senha">
+						Confirma Senha:<input type="date" value="" name="confrimaSenha">
+					</div>
+					
+				</div>
+			</div>
 			
+					
 			<div class="btn entrar">Cadastrar</div>
 		</form>
 	</div>

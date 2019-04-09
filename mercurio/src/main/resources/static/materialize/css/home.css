@@ -11,7 +11,7 @@
 
 .subLogin{
 	margin-bottom: 0px;
-    height: 90px;
+    height: 68px;
 }
 
 .campoLogin{
@@ -19,14 +19,40 @@
 }
 
 .entrar{
-    margin-top: 40px;
-    margin-left: 15px;
+	margin-top: 24px;
+    margin-left: 0px;
 }
 
+
 .campoLinha{
-	height: 45px;
+	height: 30px;
+    top: 15px;
 }
 
 .linkCadastrar{
-	margin-left: 195px;
+    margin-left: 40px;
+    margin-bottom: -18px;
+    margin-top: -2px;
+}
+
+/* div {
+	position:fixed;
+} */
+
+.img{
+	 height: 70%;
+ 	width:  80%;
+}
+
+.campoDigitar{
+	height: 30px;
+}
+
+.login{
+    margin-left: 25px !important;
+    margin-top: 0px;
+    border-radius: 0px 0px 0px 10px !important;
+}
+.divcadastro{
+	margin-bottom: 0px;	
 }

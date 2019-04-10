@@ -14,7 +14,8 @@
 }
 
 .espaco{
-	margin-left:30px;
+	margin-left:30px !important;
+	width: 1300px;
 }
 
 .entrar{
@@ -23,4 +24,8 @@
 
 .alinhamento{
 	padding-left:0px;
+}
+
+.paginaCadastro{
+	margin-left: 30px !important;
 }

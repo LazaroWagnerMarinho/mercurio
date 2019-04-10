@@ -44,6 +44,10 @@
  	width:  80%;
 }
 
+.titulo{
+    width: 116%;
+    margin-top: 22px;;
+}
 .campoDigitar{
 	height: 30px;
 }

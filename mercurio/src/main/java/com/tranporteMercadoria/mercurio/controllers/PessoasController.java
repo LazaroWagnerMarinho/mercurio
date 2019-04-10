@@ -23,7 +23,7 @@ public class PessoasController {
 	public String form(cadastroPessoas pessoas) {
 		
 		pr.save(pessoas);
-		return "pessoas/formPessoas";
+		return "homeMercurio";
 	}
 	
 	@RequestMapping("/listarPessoas")

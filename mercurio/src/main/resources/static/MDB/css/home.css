@@ -15,7 +15,8 @@
 }
 
 .campoLogin{
-	height: 60px;
+	background-color: #81bfb9;
+	padding-left: 15px;
 }
 
 .entrar{
@@ -60,3 +61,10 @@
 .divcadastro{
 	margin-bottom: 0px;	
 }
+
+.cabecalho{
+	padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+

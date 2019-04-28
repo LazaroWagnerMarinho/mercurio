@@ -14,6 +14,7 @@ public class PessoasController {
 	@Autowired
 	private PessoasRepository pr;
 	
+	
 	@RequestMapping(value="/cadastrar", method=RequestMethod.GET)
 	public String form() {
 		return "pessoas/formPessoas";
@@ -21,8 +22,9 @@ public class PessoasController {
 	
 	@RequestMapping(value="/cadastrar", method=RequestMethod.POST)
 	public String form(cadastroPessoas pessoas) {
-		
+
 		pr.save(pessoas);
+		
 		return "homeMercurio";
 	}
 	

@@ -15,7 +15,9 @@
 }
 
 .campoLogin{
-	height: 60px;
+	background-color: #81bfb9;
+	padding-left: 15px;
+    width: 515px;
 }
 
 .entrar{
@@ -44,6 +46,10 @@
  	width:  80%;
 }
 
+.titulo{
+    width: 100%;
+    margin-top: 22px;;
+}
 .campoDigitar{
 	height: 30px;
 }
@@ -56,3 +62,25 @@
 .divcadastro{
 	margin-bottom: 0px;	
 }
+
+.cabecalho{
+	padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.buttonLogin {
+    top: 20px;
+    left: 10px;
+}
+
+.inputLogin{
+	margin-bottom: 0px !important;
+}
+
+.linkCadastro{
+    color: #f8f9fa;
+    margin-top: 5px;
+    margin-left: 118px;
+}
+

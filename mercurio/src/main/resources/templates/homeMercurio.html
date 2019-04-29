@@ -1,107 +1,155 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org"
-	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="en">
 
 <head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-	<!--Import Google Icon Font-->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<!--Import materialize.css-->
-	<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
-	<link type="img" rel="img" href="imagens">
-   <link type="text/css" rel="stylesheet" href="materialize/css/home.css">
-	<title>Mercurio</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Material Design Bootstrap</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="MDB/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="MDB/css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="MDB/css/style.css" rel="stylesheet">
+  <link href="MDB/css/home.css" rel="stylesheet">
+  
 </head>
-<body> <!--  class="blue-grey lighten-4" -->
 
-	<div class="container blue-grey lighten-4 pagina">
-		<div class="row">
-			<div class="col s12">
-      			<div class="col s6">
-      				<div class="col s6" style="width: 142.5px;">
-	      				<img class="img" alt="logoMarca.png" src="imagens/logoMarca.png">
-      				</div>
-      				<div class="col s6">
-      					<h3>Mercurio</h3>
-      				</div>
-      			</div>
-      				<div class="col s6">
-	      				<div class="login col s12 card-panel teal lighten-4">
-		      				<div class="subLogin row">
-					   			<div class="col s4 campoLogin">
-				   					<div class="row">
-							  			<div class="input-field col s12 campoLinha">
-							    			<input value="" id="first_name1" type="text" class="validate" style="height: 30px;">
-							    			<label class="active" style="height: 55px;" for="first_name2">Nome</label>
-					    	  			</div>
-						    		</div>
-					   			</div>
-					   			<div class="col s4 campoLogin">
-				   					<div class="row">
-								  		<div class="input-field col s12 campoLinha">
-								    		<input value="" id="senha" type="password" class="validate" style="height: 30px;">
-								    		<label class="active" style="height: 55px;" for="first_name2">Senha</label>
-						    	  		</div>
-						    		</div>
-					   			</div>
-					   			<div class="col s4 campoLogin">
-				   					<div class="row">
-								  		<div class="col s10 btn entrar">
-											Entrar
-										</div>	
-						    		</div>
-					   			</div>
-							</div>
-							<div class="row divcadastro">
-								<div class="col s10">
-				   					<div class="row">
-								  		<div class="col s10">
-											<h6 class="linkCadastrar">
-												<a href=/cadastrar>Ainda nao tem conta? Cadastre-se</a>
-											</h6>
-										</div>	
-						    		</div>
-					   			</div>
-							</div>
-							
-						
-							
-						</div>      		
-   					</div>
-      		</div>
-		</div>
-		<div class="row">		    
-		  
-		    <div class="input-field col s6">
-			  <h4 class="tituloPropaganda">
-				Encontrando o menor caminho entre suas entregas e seus clientes.
-				Solucao completa com as melhores rotas, organizacao e controle de frota e muito mais.
-			  </h4>
-	       	</div>
-		    <div class="input-field col s6">
-		      <h6 class="textoFonte">
-		          A Mercurio e uma empresa 100% brasileira, criada para atender a necessidade da populacoo de transportar objetos do A ao ponto B.  
-		          Sediada em Realengo (Zona oeste do Rio de Janeiro), operamos e inovamos ha 17 anos no ramo de logistica. 
-		          Oferecemos opcao de coleta do objeto no endereco desejado ou na nossa agencia atendendo a sua necessidade! 
-		          Estamos sempre otimizando nossa logistica para coletar e entregar no menor tempo, deixando a concorrencia para tras e o preco la em baixo! 
-		          Acesse nosso sistema e comece a aproveitar das nossas vantagens e a tranquilidade de saber que a sua entrega chegara num piscar de olhos! 
-		          Oferecemos diversas opcoes de pagamento e aceitamos todas as bandeiras de cartao de credito. Esta esperando o que para abrir sua conta?! 
-		          Cadastre-se em menos de um minuto, a proxima entrega pode ser a sua! Conte com o apoio 24h de nossa empresa no telefone (21) 2222-3333, 
-		          para esclarecimento de duvidas ou solicite a sua entrega no nosso tele-entregas.  Transportar rapido e barato, essa e a nossa missao!
-	          </h6>
-	        </div>
-          
-  		</div>
-	</div>
-      
+<body>
 
-
+	<!--Navbar -->
+	<nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color cabecalho">
+	  <a class="navbar-brand" href="#">MERCURIO</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+	    aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item active">
+	        <a class="nav-link" href="#">Home<span class="sr-only">(current)</span>
+	        </a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="#">Quem Somos<span class="sr-only">(current)</span>
+	        </a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="#">Localizção</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="#">Contatos</a>
+	      </li>
+	    </ul>
+	    <form class="">
+	  <!-- Grid row -->
+	  <div class="form-row rounded-left campoLogin">
+	  	<div class="col-md-4 ">
+	      <div class="md-form form-group inputLogin">
+	        <input type="email" id="inputEmail6MD" class="form-control mr-sm-3" aria-describedby="passwordHelpInlineMD" name="login">
+	        <label for="inputEmail6MD" style="left: 10px;">Login</label>
+	      </div>
+	    </div>
+	    <div class="col-md-4 ">
+	      <div class="md-form form-group inputLogin">
+	        <input type="password" id="inputPassword6MD" class="form-control mr-sm-3" aria-describedby="passwordHelpInlineMD" name="senha">
+	        <label for="inputPassword6MD" style="left: 10px;">Password</label>
+	      </div>
+	    </div>
+	    <div class="col-md-3">
+	      <button type="submit" class="buttonLogin btn btn-primary btn-md">Entrar</button>
+	   	</div>
+	 	<div class="d-flex justify-content-end rounded-rigth">
+	  	  <a class="linkCadastro" href="/cadastrar">Não tem cadastro? Clique aqui</a>
+	  	</div>
+	  </div>
 	
+	</form>
+	  </div>
+	  <!-- Extended material form grid -->
+	
+	<!-- Extended material form grid -->  
+	</nav>
+<!--Carousel Wrapper-->
+<div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
+  <!--Indicators-->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-2" data-slide-to="1"></li>
+    <li data-target="#carousel-example-2" data-slide-to="2"></li>
+  </ol>
+  <!--/.Indicators-->
+  <!--Slides-->
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+      <div class="view">
+        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg"
+          alt="First slide">
+        <div class="mask rgba-black-light"></div>
+      </div>
+      <div class="carousel-caption">
+        <h3 class="h3-responsive">Light mask</h3>
+        <p>First text</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <!--Mask color-->
+      <div class="view">
+        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg"
+          alt="Second slide">
+        <div class="mask rgba-black-strong"></div>
+      </div>
+      <div class="carousel-caption">
+        <h3 class="h3-responsive">Strong mask</h3>
+        <p>Secondary text</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <!--Mask color-->
+      <div class="view">
+        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg"
+          alt="Third slide">
+        <div class="mask rgba-black-slight"></div>
+      </div>
+      <div class="carousel-caption">
+        <h3 class="h3-responsive">Slight mask</h3>
+        <p>Third text</p>
+      </div>
+    </div>
+  </div>
+  <!--/.Slides-->
+  <!--Controls-->
+  <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+  <!--/.Controls-->
+</div>
+<!--/.Carousel Wrapper-->
+  
+  
+  
+  
 
-      <!--Import jQuery before materialize.js-->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-      <script type="text/javascript" src="js/materialize.min.js"></script>
+<!--/.Navbar -->
+
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="MDB/js/jquery-3.3.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="MDB/js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="MDB/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="MDB/js/mdb.min.js"></script>
 </body>
+
 </html>

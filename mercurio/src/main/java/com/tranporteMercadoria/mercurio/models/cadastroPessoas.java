@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,16 +24,12 @@ public class cadastroPessoas implements Serializable {
 	private Date nascimento;
 	private String celular;
 	private String telefone;
-	private String cep;
-	private String endereco;
-	private int numero;
-	private String complemento;
-	private String bairro;
-	private String cidade;
-	private String uf;
-	private String email;
-	private String senha;
-	private String senhaconfirma;
+	
+	@OneToOne
+	private localizacaoPessoas localizacao;
+	
+	@OneToOne
+	private contaPessoas conta;
 	
 	
 	public long getId() {
@@ -71,69 +68,18 @@ public class cadastroPessoas implements Serializable {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	public String getCep() {
-		return cep;
+	public localizacaoPessoas getLocalizacao() {
+		return localizacao;
 	}
-	public void setCep(String cep) {
-		this.cep = cep;
+	public void setLocalizacao(localizacaoPessoas localizacao) {
+		this.localizacao = localizacao;
 	}
-	public String getEndereco() {
-		return endereco;
+	public contaPessoas getConta() {
+		return conta;
 	}
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setConta(contaPessoas conta) {
+		this.conta = conta;
 	}
-	public int getNumero() {
-		return numero;
-	}
-	public void setNumero(int numero) {
-		this.numero = numero;
-	}
-	public String getComplemento() {
-		return complemento;
-	}
-	public void setComplemento(String complemento) {
-		this.complemento = complemento;
-	}
-	public String getBairro() {
-		return bairro;
-	}
-	public void setBairro(String bairro) {
-		this.bairro = bairro;
-	}
-	public String getCidade() {
-		return cidade;
-	}
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
-	}
-	public String getUf() {
-		return uf;
-	}
-	public void setUf(String uf) {
-		this.uf = uf;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getSenha() {
-		return senha;
-	}
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-	public String getSenhaconfirma() {
-		return senhaconfirma;
-	}
-	public void setSenhaconfirma(String senhaconfirma) {
-		this.senhaconfirma = senhaconfirma;
-	}
-
-	
-	
 
 
 }

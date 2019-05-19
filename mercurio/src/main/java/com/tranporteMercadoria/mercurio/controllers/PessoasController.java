@@ -7,12 +7,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tranporteMercadoria.mercurio.models.cadastroPessoas;
+import com.tranporteMercadoria.mercurio.models.contaPessoas;
+import com.tranporteMercadoria.mercurio.models.localizacaoPessoas;
+import com.tranporteMercadoria.mercurio.repository.ContaRepository;
+import com.tranporteMercadoria.mercurio.repository.LocalizacaoRepository;
 import com.tranporteMercadoria.mercurio.repository.PessoasRepository;
 
 @Controller
 public class PessoasController {
 	@Autowired
 	private PessoasRepository pr;
+	
+	@Autowired
+	private LocalizacaoRepository lr;
+	
+	@Autowired
+	private ContaRepository cr;
 	
 	
 	@RequestMapping(value="/cadastrar", method=RequestMethod.GET)
@@ -21,9 +31,11 @@ public class PessoasController {
 	}
 	
 	@RequestMapping(value="/cadastrar", method=RequestMethod.POST)
-	public String form(cadastroPessoas pessoas) {
+	public String form(cadastroPessoas pessoas, localizacaoPessoas localizacao, contaPessoas conta) {
 
 		pr.save(pessoas);
+		lr.save(localizacao);
+		cr.save(conta);
 		
 		return "homeMercurio";
 	}

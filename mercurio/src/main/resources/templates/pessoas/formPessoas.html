@@ -2,15 +2,18 @@
 <html xmlns:th="http://thymeleaf.org"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Material Design Bootstrap</title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-  <link href="MDB/css/bootstrap.min.css" rel="stylesheet">
-  <link href="MDB/css/mdb.min.css" rel="stylesheet">
-  <link href="MDB/css/style.css" rel="stylesheet">
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  	<meta http-equiv="x-ua-compatible" content="ie=edge">
+  	<title>Material Design Bootstrap</title>
+  	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  	<link href="MDB/css/bootstrap.min.css" rel="stylesheet">
+  	<link href="MDB/css/mdb.min.css" rel="stylesheet">
+  	<link href="MDB/css/style.css" rel="stylesheet">
 	<link href="MDB/css/cadastro.css" type="text/css" rel="stylesheet">
+	
+
+	
 	<title>Cadastro</title>
 </head>	  
 <body class="corDeFundo">
@@ -29,7 +32,7 @@
                         <label for="nome">Nome</label>
                     </div>
                     <div class="md-form form-lg">
-                        <input name="cpf" type="text" id="cpf" class="form-control">
+                        <input name="cpf" type="text" id="cpf" class="form-control cpf">
                         <label for="cpf">CPF</label>
                     </div>
                     <div class="md-form form-lg" style="margin-top: 34px; width: 160px;">
@@ -48,7 +51,7 @@
                 <div class="col-sm">
                     <h5>Localização</h5>
                     <div class="md-form form-lg" style="margin-bottom: 0px;">
-                        <input name="cep" type="text" id="cep" class="form-control form-control-lg">
+                        <input name="cep" type="text" id="cep" class="form-control form-control-lg" onblur="pesquisacep(this.value)">
                         <label for="cep">CEP</label>
                     </div>
                     <div class="row" style="margin-left: -15px;margin-top: 0px; margin-right: 0px;">
@@ -103,7 +106,9 @@
                         <label for="senhaconfirma">Confirma Senha</label>
                     </div>
                       <div class="row">
-				        <div class="col-12 col-md-3 "></div>
+				        <div class="col-12 col-md-3 ">
+				        	<div class="waves-effect waves-light btn limpar" onclick="limpar()">Limpar</div>
+				        </div>
 				        <div class="col-6 col-md-4">
 				    	    <button class="waves-effect waves-light btn entrar" type="submit">salvar</button>
 				        </div>
@@ -111,15 +116,18 @@
                 </div>
             </div>
         </form>
-    </div>
-
-  <!-- JQuery -->
+    </div>	
+    
+    	<!-- JQuery -->
   <script type="text/javascript" src="MDB/js/jquery-3.3.1.min.js"></script>
   <!-- Bootstrap tooltips -->
   <script type="text/javascript" src="MDB/js/popper.min.js"></script>
   <!-- Bootstrap core JavaScript -->
   <script type="text/javascript" src="MDB/js/bootstrap.min.js"></script>
   <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="MDB/js/mdb.min.js"></script>	
+  <script type="text/javascript" src="MDB/js/mdb.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js"></script>
+  <script type="text/javascript" src="MDB/js/cadastro/cadastro.js"></script>
 </body>
 </html>

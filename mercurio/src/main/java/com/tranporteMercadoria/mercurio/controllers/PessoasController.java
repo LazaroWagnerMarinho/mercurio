@@ -30,7 +30,17 @@ public class PessoasController {
 		return "pessoas/formPessoas";
 	}
 	
-	@RequestMapping(value="/cadastrar", method=RequestMethod.POST)
+	@RequestMapping("/formPontoA")
+	public String pontoA() {
+		return "pessoas/formPontoA";
+	}
+	
+	@RequestMapping("/formPontoB")
+	public String pontoB() {
+		return "pessoas/formPontoB";
+	}
+	
+	@RequestMapping(value="/cadastrarDados", method=RequestMethod.POST)
 	public String form(cadastroPessoas pessoas, localizacaoPessoas localizacao, contaPessoas conta) {
 
 		pr.save(pessoas);

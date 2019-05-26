@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Página Inicial - Cliente</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="MDB/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="MDB/css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="MDB/css/style.css" rel="stylesheet">
+  <link href="MDB/css/home.css" rel="stylesheet">
+  <!-- MDBootstrap Datatables  -->
+<link href="MDB/css/addons/datatables.min.css" rel="stylesheet">
+ <!-- MDBootstrap Datatables  -->
+
+</head>
+
+<body>
+
+<!--Navbar -->
+	<nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color cabecalho">
+	
+	 
+	<!-- Início Botão de menu responsivo -->
+	 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+	    aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	<!-- Fim Botão de menu responsivo -->
+	  
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+	    <ul class="navbar-nav mr-auto">
+		  <li class="nav-item active">
+		
+		  </li>
+	       <li class="nav-item active">
+	        <a class="nav-link" href="minhaInfoCliente.html"> <i class="far fa-user-circle"></i>Minhas Informações<span class="sr-only">(current)</span>
+	        </a>
+	      </li>
+	     
+	      
+	      <li class="nav-item">
+	        <a class="nav-link" href="formCadEntrega.html"> <i class="fas fa-motorcycle"></i>Nova Entrega</a>
+	      </li>
+			   
+	    </ul>
+		<!-- INÍCIO Botão de Sair -->
+		<form class="form-inline">
+		
+      <div class="md-form my-0">
+	  
+	  
+       <a  href="pgiCliente.html"> Bem-vindo, Sr(a).........</a>
+      </div>
+    </form>
+		<form class="form-inline">
+		
+      <div class="md-form my-0">
+	  
+	  
+         <button   type="button" class="btn btn-danger btn-sm"> <i class="fas fa-sign-out-alt"></i>Sair</button>
+      </div>
+    </form>
+	  <!-- FIM Botão de Sair -->
+	  </div>
+	</nav>
+	
+ <form method="post">
+            <div class="row">
+                <div class="col-sm">
+                    
+					   <!-- Início do Form de Cadastro de Ponto de Coleta -->
+					<h5>Ponto de Coleta</h5>
+                    
+					
+					<div class="md-form form-lg" style="margin-bottom: 0px;">
+                        <input name="tituloEndColeta" type="text" id="tituloEndColeta" class="form-control form-control-lg"">
+                        <label for="tituloEndColeta">Título do Endereço de Coleta</label>
+                    </div>
+					 <div class="md-form form-lg">
+                        <input name="celular" type="text" id="celularContatoColeta" class="form-control form-control-lg">
+                        <label for="celularContatoColeta">Contato Celular/Telefone</label>
+                    </div>
+                 <div class="md-form form-lg" style="margin-bottom: 0px;">
+                        <input name="cepColeta" type="text" id="cepColeta" class="form-control form-control-lg" onblur="pesquisacep(this.value)">
+                        <label for="cepColeta">CEP</label>
+                    </div>
+                    <div class="row" style="margin-left: -15px;margin-top: 0px; margin-right: 0px;">
+				        <div class="col-md-9">
+				          <div class="md-form form-lg" style="margin-bottom: 28px;">
+				            <input name="endereco" type="text" id="endereco" class="form-control form-control-lg">
+                    	    <label for="endereco">Endereço</label>
+				          </div>
+				        </div>
+				        <div class="col-md-3" style="padding-right: 0px;">
+				          <div class="md-form form-lg" style="margin-bottom: 28px;">
+				            <input name="numero" type="text" id="numero" class="form-control form-control-lg">
+                    	    <label for="numero">N°</label>
+				          </div>
+				        </div>				
+				    </div>
+				    <div class="md-form form-lg" style="margin-bottom: 0px;">
+                        <input name="complemento" type="text" id="complemento" class="form-control form-control-lg">
+                        <label for="complemento">Complemento</label>
+                    </div>
+                    <div class="md-form form-lg" style="margin-bottom: 0px;">
+                        <input name="bairro" type="text" id="bairro" class="form-control form-control-lg">
+                        <label for="bairro">Bairro</label>
+                    </div>
+                    <div class="row" style="margin-left: -15px;margin-top: 0px; margin-right: 0px;">
+				        <div class="col-md-9 ">
+				          <div class="md-form form-lg">
+				            <input name="cidade" type="text" id="cidade" class="form-control form-control-lg">
+                    	    <label for="cidade">Cidade</label>
+				          </div>
+						  
+				        </div>
+				        <div class="col-md-3 align-self-end" style="padding-right: 0px;">
+				          <div class="md-form form-lg">
+				            <input name="uf" type="text" id="uf" class="form-control form-control-lg">
+                    	    <label for="uf">UF</label>
+				          </div>
+						  
+				        </div>	
+						
+				    </div>   
+				    
+                </div>
+				 <!-- Fim do Form de Cadastro de Ponto de Coleta -->
+				 
+				  <!-- Início do Form de Cadastro de Ponto de Entrega -->
+                <div class="col-sm">
+                    <h5>Ponto de Entrega</h5>
+                    
+					<div class="md-form form-lg" style="margin-bottom: 0px;">
+                        <input name="tituloEndColeta" type="text" id="tituloEndColeta" class="form-control form-control-lg"">
+                        <label for="tituloEndColeta">Título do Endereço de Entrega</label>
+                    </div>
+					 <div class="md-form form-lg">
+                        <input name="celular" type="text" id="celularContatoEntrega" class="form-control form-control-lg">
+                        <label for="celularContatoEntrega">Contato Celular/Telefone</label>
+                    </div>
+					<div class="md-form form-lg" style="margin-bottom: 0px;">
+                        <input name="cep" type="text" id="cep" class="form-control form-control-lg" onblur="pesquisacep(this.value)">
+                        <label for="cep">CEP</label>
+                    </div>
+                    <div class="row" style="margin-left: -15px;margin-top: 0px; margin-right: 0px;">
+				        <div class="col-md-9">
+				          <div class="md-form form-lg" style="margin-bottom: 28px;">
+				            <input name="endereco" type="text" id="endereco" class="form-control form-control-lg">
+                    	    <label for="endereco">Endereço</label>
+				          </div>
+				        </div>
+				        <div class="col-md-3" style="padding-right: 0px;">
+				          <div class="md-form form-lg" style="margin-bottom: 28px;">
+				            <input name="numero" type="text" id="numero" class="form-control form-control-lg">
+                    	    <label for="numero">N°</label>
+				          </div>
+				        </div>				
+				    </div>
+				    <div class="md-form form-lg" style="margin-bottom: 0px;">
+                        <input name="complemento" type="text" id="complemento" class="form-control form-control-lg">
+                        <label for="complemento">Complemento</label>
+                    </div>
+                    <div class="md-form form-lg" style="margin-bottom: 0px;">
+                        <input name="bairro" type="text" id="bairro" class="form-control form-control-lg">
+                        <label for="bairro">Bairro</label>
+                    </div>
+                    <div class="row" style="margin-left: -15px;margin-top: 0px; margin-right: 0px;">
+				        <div class="col-md-9 ">
+				          <div class="md-form form-lg">
+				            <input name="cidade" type="text" id="cidade" class="form-control form-control-lg">
+                    	    <label for="cidade">Cidade</label>
+				          </div>
+				        </div>
+				        <div class="col-md-3 align-self-end" style="padding-right: 0px;">
+				          <div class="md-form form-lg">
+				            <input name="uf" type="text" id="uf" class="form-control form-control-lg">
+                    	    <label for="uf">UF</label>
+				          </div>
+				        </div>				
+				    </div>
+					  
+                </div>
+				 <!-- Fim do Form de Cadastro de Ponto de Entrega -->
+				 
+				  <!-- Início do Form de Cadastro de Produto -->
+				  
+                <div class="col-sm">
+                    <h5>Produto</h5>
+                    <div class="md-form form-lg">
+                        <input name="pesoprod" type="text" id="pesoprod" class="form-control form-control-lg">
+                        <label for="pesoprod">Peso</label>
+                    </div>
+                  <div class="md-form form-lg">
+                        <input name="alturaprod" type="text" id="alturaprod" class="form-control form-control-lg">
+                        <label for="alturaprod">Altura do Produto</label>
+                    </div>
+                    <div class="md-form form-lg">
+                        <input name="largprod" type="text" id="largprod" class="form-control form-control-lg">
+                        <label for="largprod">Largura do Produto</label>
+                    </div>
+					<div class="md-form form-lg">
+                        <input name="profprod" type="text" id="profprod" class="form-control form-control-lg">
+                        <label for="profprod">Profundidade do Produto</label>
+                    </div>
+					
+					
+					 <!-- Fim do Form de Cadastro de Produto -->
+					 
+					  <!-- Ínicio botões de ação do Cadastro -->
+					  
+					 <div class="">
+				       
+				        	<button class="btn btn-danger btn-rounded" onclick="limpar()">Cancelar</button>
+				        
+				    	    <button class="btn btn-default btn-rounded" type="submit"><a href="resPedido.html" >Continuar </a></button>
+				      
+				      </div>
+					  
+					   <!--  Fim botões de ação do Cadastro -->
+                </div>
+            </div>
+  
+
+<!--/.Navbar -->
+
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="MDB/js/jquery-3.3.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="MDB/js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="MDB/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="MDB/js/mdb.min.js"></script>
+
+</body>
+</html>

@@ -5,6 +5,9 @@ $(document).ready(function(){
 	$('#cep').mask('00.000-000', {reverse: true});
 });
 
+function home(){
+	window.history.back();
+}
 
 function limpar(){
 	$('#nome')[0].value="";

@@ -7,4 +7,5 @@ import com.tranporteMercadoria.mercurio.models.contaPessoas;
 
 public interface ContaRepository extends JpaRepository<contaPessoas, Long> {
 
+	contaPessoas findByLogin(String login);
 }

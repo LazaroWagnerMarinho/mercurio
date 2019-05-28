@@ -1,6 +1,7 @@
 package com.tranporteMercadoria.mercurio.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -40,11 +41,12 @@ public class PessoasController {
 		return "pessoas/formPontoB";
 	}
 	
-	@RequestMapping(value="/cadastrarDados", method=RequestMethod.POST)
+	@RequestMapping(value="/cadastrar", method=RequestMethod.POST)
 	public String form(cadastroPessoas pessoas, localizacaoPessoas localizacao, contaPessoas conta) {
 
 		pr.save(pessoas);
 		lr.save(localizacao);
+		criptografarSenhar(conta);
 		cr.save(conta);
 		
 		return "homeMercurio";
@@ -56,6 +58,10 @@ public class PessoasController {
 		Iterable<cadastroPessoas> cadastroPessoas = pr.findAll();
 		mv.addObject("listaPessoa",cadastroPessoas);
 		return mv;
+	}
+	
+	public void criptografarSenhar(contaPessoas conta) {
+		conta.setSenha(new BCryptPasswordEncoder().encode(conta.getSenha()));
 	}
 
 }

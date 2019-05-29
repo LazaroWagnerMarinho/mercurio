@@ -26,6 +26,11 @@ public class PessoasController {
 	private ContaRepository cr;
 	
 	
+	@RequestMapping("/formCadEntrega")
+	public String formCadEntrega() {
+		return "pessoas/formCadEntrega";
+	}
+	
 	@RequestMapping(value="/cadastrar", method=RequestMethod.GET)
 	public String form() {
 		return "pessoas/formPessoas";
@@ -39,6 +44,17 @@ public class PessoasController {
 	@RequestMapping("/formPontoB")
 	public String pontoB() {
 		return "pessoas/formPontoB";
+	}
+	
+	@RequestMapping("/index")
+	public String index() {
+		return "pessoas/index";
+	}
+	
+	
+	@RequestMapping("/pgiCliente")
+	public String pgiCliente() {
+		return "pessoas/pgiCliente";
 	}
 	
 	@RequestMapping(value="/cadastrar", method=RequestMethod.POST)

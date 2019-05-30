@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lxmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
   <meta charset="utf-8">
@@ -44,30 +45,29 @@
 	        <a class="nav-link" href="#">Contatos</a>
 	      </li>
 	    </ul>
-	    <form class="">
-	  <!-- Grid row -->
-	  <div class="form-row rounded-left campoLogin">
-	  	<div class="col-md-4 ">
-	      <div class="md-form form-group inputLogin">
-	        <input type=text id="inputEmail6MD" class="form-control mr-sm-3" aria-describedby="passwordHelpInlineMD" name="login">
-	        <label for="inputEmail6MD" style="left: 10px;">Login</label>
-	      </div>
-	    </div>
-	    <div class="col-md-4 ">
-	      <div class="md-form form-group inputLogin">
-	        <input type="password" id="Password" class="form-control mr-sm-3" aria-describedby="passwordHelpInlineMD" name="senha">
-	        <label for="Password" style="left: 10px;">Senha</label>
-	      </div>
-	    </div>
-	    <div class="col-md-3">
-	      <button type="submit" class="buttonLogin btn btn-primary btn-md" >Entrar</button>
-	   	</div>
-	 	<div class="d-flex justify-content-end rounded-rigth">
-	  	  <a class="linkCadastro" href="/cadastrar">Não tem cadastro? Clique aqui</a>
-	  	</div>
-	  </div>
-	
-	</form>
+	    <form method="post" action="/entrar">
+	  		<!-- Grid row -->
+			  <div class="form-row rounded-left campoLogin">
+			  	<div class="col-md-4 ">
+			      <div class="md-form form-group inputLogin">
+			        <input type=text id="inputEmail6MD" class="form-control mr-sm-3" aria-describedby="passwordHelpInlineMD" name="login">
+			        <label for="inputEmail6MD" style="left: 10px;">Login</label>
+			      </div>
+			    </div>
+			    <div class="col-md-4 ">
+			      <div class="md-form form-group inputLogin">
+			        <input type="password" id="Password" class="form-control mr-sm-3" aria-describedby="passwordHelpInlineMD" name="senha">
+			        <label for="Password" style="left: 10px;">Senha</label>
+			      </div>
+			    </div>
+			    <div class="col-md-3">
+			      <button type="submit" href="/login" class="buttonLogin btn btn-primary btn-md" >Entrar</button>
+			   	</div>
+			 	<div class="d-flex justify-content-end rounded-rigth">
+			  	  <a class="linkCadastro" href="/cadastrar">Não tem cadastro? Clique aqui</a>
+			  	</div>
+			  </div>
+		</form>
 	  </div>
 	  <!-- Extended material form grid -->
 	

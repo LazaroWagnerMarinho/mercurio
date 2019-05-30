@@ -36,6 +36,12 @@ public class PessoasController {
 		return "pessoas/formPessoas";
 	}
 	
+	@RequestMapping(value="/entrar")
+	public String form(contaPessoas conta) {
+		
+		return"pessoas/pgiCliente";
+	}
+	
 	@RequestMapping("/formPontoA")
 	public String pontoA() {
 		return "pessoas/formPontoA";

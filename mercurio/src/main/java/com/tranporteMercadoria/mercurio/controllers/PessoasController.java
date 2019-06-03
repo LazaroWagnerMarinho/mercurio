@@ -1,7 +1,6 @@
 package com.tranporteMercadoria.mercurio.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,7 +25,7 @@ public class PessoasController {
 	private ContaRepository cr;
 	
 	
-	@RequestMapping("/formCadEntrega")
+	@RequestMapping("/CadastrarEntrega")
 	public String formCadEntrega() {
 		return "pessoas/formCadEntrega";
 	}
@@ -39,7 +38,13 @@ public class PessoasController {
 	@RequestMapping(value="/entrar")
 	public String form(contaPessoas conta) {
 		
-		return"pessoas/pgiCliente";
+		if(confirmarAssinatura(conta)) {
+			return"pessoas/pgiCliente";
+		}else {
+			return "homeMercurio";
+		}
+		
+		
 	}
 	
 	@RequestMapping("/formPontoA")
@@ -58,17 +63,16 @@ public class PessoasController {
 	}
 	
 	
-	@RequestMapping("/pgiCliente")
-	public String pgiCliente() {
-		return "pessoas/pgiCliente";
-	}
+//	@RequestMapping("/pgiCliente")
+//	public String pgiCliente() {
+//		return "pessoas/pgiCliente";
+//	}
 	
 	@RequestMapping(value="/cadastrar", method=RequestMethod.POST)
 	public String form(cadastroPessoas pessoas, localizacaoPessoas localizacao, contaPessoas conta) {
 
 		pr.save(pessoas);
 		lr.save(localizacao);
-		criptografarSenhar(conta);
 		cr.save(conta);
 		
 		return "homeMercurio";
@@ -82,8 +86,14 @@ public class PessoasController {
 		return mv;
 	}
 	
-	public void criptografarSenhar(contaPessoas conta) {
-		conta.setSenha(new BCryptPasswordEncoder().encode(conta.getSenha()));
+	private boolean confirmarAssinatura(contaPessoas conta) {
+		contaPessoas contas = cr.findByLogin(conta.getLogin());
+		if(contas.getSenha().equals(conta.getSenha())) {
+			return true;
+		}else {
+			return false;
+		}
+		
 	}
-
+	
 }

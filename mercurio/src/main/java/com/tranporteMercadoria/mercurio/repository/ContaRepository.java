@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.tranporteMercadoria.mercurio.models.contaPessoas;
 
 
-public interface ContaRepository extends JpaRepository<contaPessoas, Long> {
+public interface ContaRepository extends JpaRepository<contaPessoas, String> {
 
 	contaPessoas findByLogin(String login);
 }

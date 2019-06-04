@@ -6,9 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tranporteMercadoria.mercurio.models.cadastroDeProdutos;
 import com.tranporteMercadoria.mercurio.models.cadastroPessoas;
 import com.tranporteMercadoria.mercurio.models.contaPessoas;
 import com.tranporteMercadoria.mercurio.models.localizacaoPessoas;
+import com.tranporteMercadoria.mercurio.repository.CadProdutoRepository;
 import com.tranporteMercadoria.mercurio.repository.ContaRepository;
 import com.tranporteMercadoria.mercurio.repository.LocalizacaoRepository;
 import com.tranporteMercadoria.mercurio.repository.PessoasRepository;
@@ -24,10 +26,22 @@ public class PessoasController {
 	@Autowired
 	private ContaRepository cr;
 	
+	@Autowired
+	private CadProdutoRepository cpr;
+	
 	
 	@RequestMapping(value="/cadastrarEntrega", method=RequestMethod.GET)
 	public String formCadEntrega() {
 		return "pessoas/formCadEntrega";
+	}
+	
+	@RequestMapping(value="/continuarCadProduto", method=RequestMethod.POST)
+	public String resPedido(cadastroDeProdutos produtos) {
+
+		cpr.save(produtos);
+
+		
+		return "/resPedido";
 	}
 	
 	@RequestMapping(value="/cadastrar")
@@ -63,10 +77,6 @@ public class PessoasController {
 	}
 	
 	
-//	@RequestMapping("/pgiCliente")
-//	public String pgiCliente() {
-//		return "pessoas/pgiCliente";
-//	}
 	
 	@RequestMapping(value="/cadastrar", method=RequestMethod.POST)
 	public String form(cadastroPessoas pessoas, localizacaoPessoas localizacao, contaPessoas conta) {

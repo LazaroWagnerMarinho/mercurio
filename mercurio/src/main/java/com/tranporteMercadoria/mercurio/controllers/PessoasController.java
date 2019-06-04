@@ -25,17 +25,17 @@ public class PessoasController {
 	private ContaRepository cr;
 	
 	
-	@RequestMapping("/CadastrarEntrega")
+	@RequestMapping(value="/cadastrarEntrega", method=RequestMethod.GET)
 	public String formCadEntrega() {
 		return "pessoas/formCadEntrega";
 	}
 	
-	@RequestMapping(value="/cadastrar", method=RequestMethod.GET)
+	@RequestMapping(value="/cadastrar")
 	public String form() {
 		return "pessoas/formPessoas";
 	}
 	
-	@RequestMapping(value="/entrar")
+	@RequestMapping(value="/entrar", method=RequestMethod.POST)
 	public String form(contaPessoas conta) {
 		
 		if(confirmarAssinatura(conta)) {
@@ -78,7 +78,7 @@ public class PessoasController {
 		return "homeMercurio";
 	}
 	
-	@RequestMapping("/listarPessoas")
+	@RequestMapping(value= "/listarPessoas", method=RequestMethod.GET)
 	public ModelAndView cadastroPessoas() {
 		ModelAndView mv = new ModelAndView("listaPessoas");
 		Iterable<cadastroPessoas> cadastroPessoas = pr.findAll();

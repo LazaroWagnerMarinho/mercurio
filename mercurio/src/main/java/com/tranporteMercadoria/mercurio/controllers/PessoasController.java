@@ -1,15 +1,16 @@
 package com.tranporteMercadoria.mercurio.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tranporteMercadoria.mercurio.models.cadastroDeProdutos;
 import com.tranporteMercadoria.mercurio.models.cadastroPessoas;
 import com.tranporteMercadoria.mercurio.models.contaPessoas;
 import com.tranporteMercadoria.mercurio.models.localizacaoPessoas;
+import com.tranporteMercadoria.mercurio.repository.CadProdutoRepository;
 import com.tranporteMercadoria.mercurio.repository.ContaRepository;
 import com.tranporteMercadoria.mercurio.repository.LocalizacaoRepository;
 import com.tranporteMercadoria.mercurio.repository.PessoasRepository;
@@ -25,10 +26,39 @@ public class PessoasController {
 	@Autowired
 	private ContaRepository cr;
 	
+	@Autowired
+	private CadProdutoRepository cpr;
 	
-	@RequestMapping(value="/cadastrar", method=RequestMethod.GET)
+	
+	@RequestMapping(value="/cadastrarEntrega", method=RequestMethod.GET)
+	public String formCadEntrega() {
+		return "pessoas/formCadEntrega";
+	}
+	
+	@RequestMapping(value="/continuarCadProduto", method=RequestMethod.POST)
+	public String resPedido(cadastroDeProdutos produtos) {
+
+		cpr.save(produtos);
+
+		
+		return "/resPedido";
+	}
+	
+	@RequestMapping(value="/cadastrar")
 	public String form() {
 		return "pessoas/formPessoas";
+	}
+	
+	@RequestMapping(value="/entrar", method=RequestMethod.POST)
+	public String form(contaPessoas conta) {
+		
+		if(confirmarAssinatura(conta)) {
+			return"pessoas/pgiCliente";
+		}else {
+			return "homeMercurio";
+		}
+		
+		
 	}
 	
 	@RequestMapping("/formPontoA")
@@ -41,18 +71,24 @@ public class PessoasController {
 		return "pessoas/formPontoB";
 	}
 	
+	@RequestMapping("/index")
+	public String index() {
+		return "pessoas/index";
+	}
+	
+	
+	
 	@RequestMapping(value="/cadastrar", method=RequestMethod.POST)
 	public String form(cadastroPessoas pessoas, localizacaoPessoas localizacao, contaPessoas conta) {
 
 		pr.save(pessoas);
 		lr.save(localizacao);
-		criptografarSenhar(conta);
 		cr.save(conta);
 		
 		return "homeMercurio";
 	}
 	
-	@RequestMapping("/listarPessoas")
+	@RequestMapping(value= "/listarPessoas", method=RequestMethod.GET)
 	public ModelAndView cadastroPessoas() {
 		ModelAndView mv = new ModelAndView("listaPessoas");
 		Iterable<cadastroPessoas> cadastroPessoas = pr.findAll();
@@ -60,8 +96,14 @@ public class PessoasController {
 		return mv;
 	}
 	
-	public void criptografarSenhar(contaPessoas conta) {
-		conta.setSenha(new BCryptPasswordEncoder().encode(conta.getSenha()));
+	private boolean confirmarAssinatura(contaPessoas conta) {
+		contaPessoas contas = cr.findByLogin(conta.getLogin());
+		if(contas.getSenha().equals(conta.getSenha())) {
+			return true;
+		}else {
+			return false;
+		}
+		
 	}
-
+	
 }

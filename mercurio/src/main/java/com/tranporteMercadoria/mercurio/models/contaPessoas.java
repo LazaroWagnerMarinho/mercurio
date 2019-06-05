@@ -1,6 +1,6 @@
 package com.tranporteMercadoria.mercurio.models;
 
-import java.util.Collection;
+import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,11 +8,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
-public class contaPessoas implements UserDetails{
+public class contaPessoas implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -24,8 +24,7 @@ public class contaPessoas implements UserDetails{
 	private String senhaconfirma;
 	
 	@OneToOne
-	private cadastroPessoas cadastro;
-	
+	private cadastroPessoas cadastro;	
 	
 	
 	public long getId() {
@@ -64,41 +63,6 @@ public class contaPessoas implements UserDetails{
 	}
 	public void setCadastro(cadastroPessoas cadastro) {
 		this.cadastro = cadastro;
-	}
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public String getPassword() {
-		// TODO Auto-generated method stub
-		return this.senha;
-	}
-	@Override
-	public String getUsername() {
-		// TODO Auto-generated method stub
-		return this.login;
-	}
-	@Override
-	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-	@Override
-	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-	@Override
-	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-	@Override
-	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return true;
 	}
 	
 

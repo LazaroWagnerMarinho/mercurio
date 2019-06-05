@@ -6,9 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tranporteMercadoria.mercurio.models.cadastroDeProdutos;
 import com.tranporteMercadoria.mercurio.models.cadastroPessoas;
 import com.tranporteMercadoria.mercurio.models.contaPessoas;
 import com.tranporteMercadoria.mercurio.models.localizacaoPessoas;
+import com.tranporteMercadoria.mercurio.repository.CadProdutoRepository;
 import com.tranporteMercadoria.mercurio.repository.ContaRepository;
 import com.tranporteMercadoria.mercurio.repository.LocalizacaoRepository;
 import com.tranporteMercadoria.mercurio.repository.PessoasRepository;
@@ -24,21 +26,33 @@ public class PessoasController {
 	@Autowired
 	private ContaRepository cr;
 	
+	@Autowired
+	private CadProdutoRepository cpr;
 	
-	@RequestMapping("/CadastrarEntrega")
+	
+	@RequestMapping(value="/cadastrarEntrega", method=RequestMethod.GET)
 	public String formCadEntrega() {
 		return "pessoas/formCadEntrega";
 	}
 	
-	@RequestMapping(value="/cadastrar", method=RequestMethod.GET)
+	@RequestMapping(value="/continuarCadProduto", method=RequestMethod.POST)
+	public String resPedido(cadastroDeProdutos produtos, contaPessoas conta) {
+//		produtos.setConta(conta);
+		cpr.save(produtos);
+		
+		return "pessoas/resPedido";
+	}
+	
+	@RequestMapping(value="/cadastrar")
 	public String form() {
 		return "pessoas/formPessoas";
 	}
 	
-	@RequestMapping(value="/entrar")
+	@RequestMapping(value="/entrar", method=RequestMethod.POST)
 	public String form(contaPessoas conta) {
 		
 		if(confirmarAssinatura(conta)) {
+		//pegar valor do banco e injetar em alguma coluna PK
 			return"pessoas/pgiCliente";
 		}else {
 			return "homeMercurio";
@@ -47,26 +61,22 @@ public class PessoasController {
 		
 	}
 	
-	@RequestMapping("/formPontoA")
+	@RequestMapping("/pontoA")
 	public String pontoA() {
 		return "pessoas/formPontoA";
 	}
 	
-	@RequestMapping("/formPontoB")
+	@RequestMapping("/pontoB")
 	public String pontoB() {
 		return "pessoas/formPontoB";
 	}
 	
-	@RequestMapping("/index")
-	public String index() {
-		return "pessoas/index";
-	}
-	
-	
-//	@RequestMapping("/pgiCliente")
-//	public String pgiCliente() {
-//		return "pessoas/pgiCliente";
+//	@RequestMapping("/index")
+//	public String index() {
+//		return "pessoas/index";
 //	}
+	
+	
 	
 	@RequestMapping(value="/cadastrar", method=RequestMethod.POST)
 	public String form(cadastroPessoas pessoas, localizacaoPessoas localizacao, contaPessoas conta) {
@@ -78,7 +88,7 @@ public class PessoasController {
 		return "homeMercurio";
 	}
 	
-	@RequestMapping("/listarPessoas")
+	@RequestMapping(value= "/listarPessoas", method=RequestMethod.GET)
 	public ModelAndView cadastroPessoas() {
 		ModelAndView mv = new ModelAndView("listaPessoas");
 		Iterable<cadastroPessoas> cadastroPessoas = pr.findAll();

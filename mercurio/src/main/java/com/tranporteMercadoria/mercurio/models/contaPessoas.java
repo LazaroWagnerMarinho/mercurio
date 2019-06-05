@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 
@@ -24,7 +25,10 @@ public class contaPessoas implements Serializable{
 	private String senhaconfirma;
 	
 	@OneToOne
-	private cadastroPessoas cadastro;	
+	private cadastroPessoas cadastro;
+	
+	@OneToOne
+	private cadastroDeProdutos produtos;
 	
 	
 	public long getId() {
@@ -64,6 +68,14 @@ public class contaPessoas implements Serializable{
 	public void setCadastro(cadastroPessoas cadastro) {
 		this.cadastro = cadastro;
 	}
+	public cadastroDeProdutos getProdutos() {
+		return produtos;
+	}
+	public void setProdutos(cadastroDeProdutos produtos) {
+		this.produtos = produtos;
+	}
+	
+	
 	
 
 }

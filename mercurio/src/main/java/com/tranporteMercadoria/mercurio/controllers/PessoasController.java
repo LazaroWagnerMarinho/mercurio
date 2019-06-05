@@ -36,12 +36,11 @@ public class PessoasController {
 	}
 	
 	@RequestMapping(value="/continuarCadProduto", method=RequestMethod.POST)
-	public String resPedido(cadastroDeProdutos produtos) {
-
+	public String resPedido(cadastroDeProdutos produtos, contaPessoas conta) {
+//		produtos.setConta(conta);
 		cpr.save(produtos);
-
 		
-		return "/resPedido";
+		return "pessoas/resPedido";
 	}
 	
 	@RequestMapping(value="/cadastrar")
@@ -53,6 +52,7 @@ public class PessoasController {
 	public String form(contaPessoas conta) {
 		
 		if(confirmarAssinatura(conta)) {
+		//pegar valor do banco e injetar em alguma coluna PK
 			return"pessoas/pgiCliente";
 		}else {
 			return "homeMercurio";
@@ -61,20 +61,20 @@ public class PessoasController {
 		
 	}
 	
-	@RequestMapping("/formPontoA")
+	@RequestMapping("/pontoA")
 	public String pontoA() {
 		return "pessoas/formPontoA";
 	}
 	
-	@RequestMapping("/formPontoB")
+	@RequestMapping("/pontoB")
 	public String pontoB() {
 		return "pessoas/formPontoB";
 	}
 	
-	@RequestMapping("/index")
-	public String index() {
-		return "pessoas/index";
-	}
+//	@RequestMapping("/index")
+//	public String index() {
+//		return "pessoas/index";
+//	}
 	
 	
 	

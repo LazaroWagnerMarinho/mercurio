@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lxmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
   <meta charset="utf-8">
@@ -14,7 +15,6 @@
   <link href="MDB/css/mdb.min.css" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="MDB/css/style.css" rel="stylesheet">
-  <link href="MDB/css/home.css" rel="stylesheet">
   <!-- MDBootstrap Datatables  -->
 <link href="MDB/css/addons/datatables.min.css" rel="stylesheet">
  <!-- MDBootstrap Datatables  -->
@@ -71,7 +71,7 @@
 	  </div>
 	</nav>
 	
- <form method="post">
+ <form method="post" action="/continuarCadProduto">
             <div class="row">
                 <div class="col-sm">
                     
@@ -80,51 +80,51 @@
                     
 					
 					<div class="md-form form-lg" style="margin-bottom: 0px;">
-                        <input name="tituloEndColeta" type="text" id="tituloEndColeta" class="form-control form-control-lg">
+                        <input name="titulo_End_Coleta" type="text" id="tituloEndColeta" class="form-control form-control-lg">
                         <label for="tituloEndColeta">Título do Endereço de Coleta</label>
                     </div>
 					 <div class="md-form form-lg">
-                        <input name="celular" type="text" id="celularContatoColeta" class="form-control form-control-lg">
+                        <input name="contato_Tel" type="text" id="celularContatoColeta" class="form-control form-control-lg">
                         <label for="celularContatoColeta">Contato Celular/Telefone</label>
                     </div>
                  <div class="md-form form-lg" style="margin-bottom: 0px;">
-                        <input name="cepColeta" type="text" id="cepColeta" class="form-control form-control-lg" onblur="pesquisacep(this.value)">
+                        <input name="cep_Coleta" type="text" id="cepColeta" class="form-control form-control-lg cep" onblur="pesquisacep(cepColeta, this.value)">
                         <label for="cepColeta">CEP</label>
                     </div>
                     <div class="row" style="margin-left: -15px;margin-top: 0px; margin-right: 0px;">
 				        <div class="col-md-9">
 				          <div class="md-form form-lg" style="margin-bottom: 28px;">
-				            <input name="endereco" type="text" id="endereco" class="form-control form-control-lg">
-                    	    <label for="endereco">Endereço</label>
+				            <input name="end_Coleta" type="text" id="cepColetaEndereco" class="form-control form-control-lg">
+                    	    <label for="cepColetaEndereco">Endereço</label>
 				          </div>
 				        </div>
 				        <div class="col-md-3" style="padding-right: 0px;">
 				          <div class="md-form form-lg" style="margin-bottom: 28px;">
-				            <input name="numero" type="text" id="numero" class="form-control form-control-lg">
+				            <input name="num_Coleta" type="text" id="numero" class="form-control form-control-lg">
                     	    <label for="numero">N°</label>
 				          </div>
 				        </div>				
 				    </div>
 				    <div class="md-form form-lg" style="margin-bottom: 0px;">
-                        <input name="complemento" type="text" id="complemento" class="form-control form-control-lg">
+                        <input name="compl_Coleta" type="text" id="complemento" class="form-control form-control-lg">
                         <label for="complemento">Complemento</label>
                     </div>
                     <div class="md-form form-lg" style="margin-bottom: 0px;">
-                        <input name="bairro" type="text" id="bairro" class="form-control form-control-lg">
-                        <label for="bairro">Bairro</label>
+                        <input name="bairro_Coleta" type="text" id="cepColetaBairro" class="form-control form-control-lg">
+                        <label for="cepColetaBairro">Bairro</label>
                     </div>
                     <div class="row" style="margin-left: -15px;margin-top: 0px; margin-right: 0px;">
 				        <div class="col-md-9 ">
 				          <div class="md-form form-lg">
-				            <input name="cidade" type="text" id="cidade" class="form-control form-control-lg">
-                    	    <label for="cidade">Cidade</label>
+				            <input name="cidade_Coleta" type="text" id="cepColetaCidade" class="form-control form-control-lg">
+                    	    <label for="cepColetaCidade">Cidade</label>
 				          </div>
 						  
 				        </div>
 				        <div class="col-md-3 align-self-end" style="padding-right: 0px;">
 				          <div class="md-form form-lg">
-				            <input name="uf" type="text" id="uf" class="form-control form-control-lg">
-                    	    <label for="uf">UF</label>
+				            <input name="uf_Coleta" type="text" id="cepColetaUf" class="form-control form-control-lg">
+                    	    <label for="cepColetaUf">UF</label>
 				          </div>
 						  
 				        </div>	
@@ -139,49 +139,49 @@
                     <h5>Ponto de Entrega</h5>
                     
 					<div class="md-form form-lg" style="margin-bottom: 0px;">
-                        <input name="tituloEndColeta" type="text" id="tituloEndColeta" class="form-control form-control-lg">
+                        <input name="titulo_End_Entrega" type="text" id="tituloEndColeta" class="form-control form-control-lg">
                         <label for="tituloEndColeta">Título do Endereço de Entrega</label>
                     </div>
 					 <div class="md-form form-lg">
-                        <input name="celular" type="text" id="celularContatoEntrega" class="form-control form-control-lg">
+                        <input name="contato_Tel_Entrega" type="text" id="celularContatoEntrega" class="form-control form-control-lg">
                         <label for="celularContatoEntrega">Contato Celular/Telefone</label>
                     </div>
 					<div class="md-form form-lg" style="margin-bottom: 0px;">
-                        <input name="cep" type="text" id="cep" class="form-control form-control-lg" onblur="pesquisacep(this.value)">
+                        <input name="cep_Entrega" type="text" id="cepEntrega" class="form-control form-control-lg" onblur="pesquisacep(cepEntrega, this.value)">
                         <label for="cep">CEP</label>
                     </div>
                     <div class="row" style="margin-left: -15px;margin-top: 0px; margin-right: 0px;">
 				        <div class="col-md-9">
 				          <div class="md-form form-lg" style="margin-bottom: 28px;">
-				            <input name="endereco" type="text" id="endereco" class="form-control form-control-lg">
+				            <input name="end_Entrega" type="text" id="cepEntregaEndereco" class="form-control form-control-lg">
                     	    <label for="endereco">Endereço</label>
 				          </div>
 				        </div>
 				        <div class="col-md-3" style="padding-right: 0px;">
 				          <div class="md-form form-lg" style="margin-bottom: 28px;">
-				            <input name="numero" type="text" id="numero" class="form-control form-control-lg">
+				            <input name="num_Entrega" type="text" id="numero" class="form-control form-control-lg">
                     	    <label for="numero">N°</label>
 				          </div>
 				        </div>				
 				    </div>
 				    <div class="md-form form-lg" style="margin-bottom: 0px;">
-                        <input name="complemento" type="text" id="complemento" class="form-control form-control-lg">
+                        <input name="compl_Entrega" type="text" id="complemento" class="form-control form-control-lg">
                         <label for="complemento">Complemento</label>
                     </div>
                     <div class="md-form form-lg" style="margin-bottom: 0px;">
-                        <input name="bairro" type="text" id="bairro" class="form-control form-control-lg">
+                        <input name="bairro_Entrega" type="text" id="cepEntregaBairro" class="form-control form-control-lg">
                         <label for="bairro">Bairro</label>
                     </div>
                     <div class="row" style="margin-left: -15px;margin-top: 0px; margin-right: 0px;">
 				        <div class="col-md-9 ">
 				          <div class="md-form form-lg">
-				            <input name="cidade" type="text" id="cidade" class="form-control form-control-lg">
+				            <input name="cidade_Entrega" type="text" id="cepEntregaCidade" class="form-control form-control-lg">
                     	    <label for="cidade">Cidade</label>
 				          </div>
 				        </div>
 				        <div class="col-md-3 align-self-end" style="padding-right: 0px;">
 				          <div class="md-form form-lg">
-				            <input name="uf" type="text" id="uf" class="form-control form-control-lg">
+				            <input name="uf_Entrega" type="text" id="cepEntregaUf" class="form-control form-control-lg">
                     	    <label for="uf">UF</label>
 				          </div>
 				        </div>				
@@ -195,19 +195,19 @@
                 <div class="col-sm">
                     <h5>Produto</h5>
                     <div class="md-form form-lg">
-                        <input name="pesoprod" type="text" id="pesoprod" class="form-control form-control-lg">
+                        <input name="peso_Produto" type="text" id="pesoprod" class="form-control form-control-lg">
                         <label for="pesoprod">Peso</label>
                     </div>
                   <div class="md-form form-lg">
-                        <input name="alturaprod" type="text" id="alturaprod" class="form-control form-control-lg">
+                        <input name="altura_Produto" type="text" id="alturaprod" class="form-control form-control-lg">
                         <label for="alturaprod">Altura do Produto</label>
                     </div>
                     <div class="md-form form-lg">
-                        <input name="largprod" type="text" id="largprod" class="form-control form-control-lg">
+                        <input name="largura_Produto" type="text" id="largprod" class="form-control form-control-lg">
                         <label for="largprod">Largura do Produto</label>
                     </div>
 					<div class="md-form form-lg">
-                        <input name="profprod" type="text" id="profprod" class="form-control form-control-lg">
+                        <input name="Profundidade_Produto" type="text" id="profprod" class="form-control form-control-lg">
                         <label for="profprod">Profundidade do Produto</label>
                     </div>
 					
@@ -220,7 +220,7 @@
 				       
 				        	<button class="btn btn-danger btn-rounded" onclick="limpar()">Cancelar</button>
 				        
-				    	    <button class="btn btn-default btn-rounded" type="submit"><a href="resPedido.html" >Continuar </a></button>
+				    	    <button class="btn btn-default btn-rounded" type="submit">Continuar</button>
 				      
 				      </div>
 					  
@@ -228,10 +228,6 @@
                 </div>
             </div>
 </form>
-  
-
-<!--/.Navbar -->
-
 
   <!-- SCRIPTS -->
   <!-- JQuery -->
@@ -242,6 +238,8 @@
   <script type="text/javascript" src="MDB/js/bootstrap.min.js"></script>
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="MDB/js/mdb.min.js"></script>
+  
+  <script type="text/javascript" src="MDB/js/produtos/formCadEntrega.js"></script>
 
 </body>
 </html>

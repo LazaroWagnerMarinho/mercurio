@@ -37,11 +37,13 @@ public class PessoasController {
 	
 	@RequestMapping(value="/continuarCadProduto", method=RequestMethod.POST)
 	public String resPedido(cadastroDeProdutos produtos, contaPessoas conta) {
-//		produtos.setConta(conta);
 		cpr.save(produtos);
-		
+		ModelAndView mv = new ModelAndView("continuarCadProduto");
+		Iterable<cadastroDeProdutos> listaDeProdutos = cpr.findAll();
+		mv.addObject("listaInformacoes",listaDeProdutos);
 		return "pessoas/resPedido";
 	}
+	
 	
 	@RequestMapping(value="/cadastrar")
 	public String form() {
@@ -93,6 +95,14 @@ public class PessoasController {
 		ModelAndView mv = new ModelAndView("listaPessoas");
 		Iterable<cadastroPessoas> cadastroPessoas = pr.findAll();
 		mv.addObject("listaPessoa",cadastroPessoas);
+		return mv;
+	}
+	
+	@RequestMapping(value= "/listarDeProdutos", method=RequestMethod.GET)
+	public ModelAndView cadastroDeProdutos() {
+		ModelAndView mv = new ModelAndView("pessoas/resPedido");
+		Iterable<cadastroDeProdutos> listaDeProdutos = cpr.findAll();
+		mv.addObject("listaInformacoes",listaDeProdutos);
 		return mv;
 	}
 	

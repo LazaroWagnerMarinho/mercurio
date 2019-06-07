@@ -34,7 +34,7 @@
 	  </button>
 	<!-- Fim Botão de menu responsivo -->
 	  
-	  <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent-333" th:each="conta : ${contaLogado}">
 	    <ul class="navbar-nav mr-auto">
 		  <li class="nav-item active">
 		
@@ -46,7 +46,7 @@
 	     
 	      
 	      <li class="nav-item">
-	        <a class="nav-link" href="formCadEntrega.html"> <i class="fas fa-motorcycle"></i>Nova Entrega</a>
+	        <a th:href="${(#mvc.url('cr#formCadEntrega').arg(0, conta.id)).build()}" class="nav-link"><i class="fas fa-motorcycle"></i>Nova Entrega</a>
 	      </li>
 			   
 	    </ul>
@@ -56,7 +56,7 @@
       <div class="md-form my-0">
 	  
 	  
-       <a  href="pgiCliente.html"> Bem-vindo, Sr(a).........</a>
+       <a> Bem-vindo, Sr(a) <span th:text="${conta.cadastro.nome}"></a>
       </div>
     </form>
 		<form class="form-inline">

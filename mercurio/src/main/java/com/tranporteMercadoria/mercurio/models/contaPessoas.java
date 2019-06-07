@@ -1,6 +1,7 @@
 package com.tranporteMercadoria.mercurio.models;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,9 +28,10 @@ public class contaPessoas implements Serializable{
 	@OneToOne
 	private cadastroPessoas cadastro;
 	
-	@OneToOne
-	private cadastroDeProdutos produtos;
+	@OneToMany
+	private List<cadastroDeProdutos> produtos;
 	
+		
 	
 	public long getId() {
 		return id;
@@ -68,14 +70,14 @@ public class contaPessoas implements Serializable{
 	public void setCadastro(cadastroPessoas cadastro) {
 		this.cadastro = cadastro;
 	}
-	public cadastroDeProdutos getProdutos() {
+	public List<cadastroDeProdutos> getProdutos() {
 		return produtos;
 	}
-	public void setProdutos(cadastroDeProdutos produtos) {
+	public void setProdutos(List<cadastroDeProdutos> produtos) {
 		this.produtos = produtos;
 	}
 	
 	
-	
+
 
 }

@@ -2,6 +2,7 @@ package com.tranporteMercadoria.mercurio.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,13 +31,21 @@ public class PessoasController {
 	private CadProdutoRepository cpr;
 	
 	
-	@RequestMapping(value="/cadastrarEntrega", method=RequestMethod.GET)
-	public String formCadEntrega() {
-		return "pessoas/formCadEntrega";
+	@RequestMapping(value="/cadastrarEntrega/{contaId}", method=RequestMethod.GET)
+	public ModelAndView formCadEntrega(@PathVariable("contaId") long contaId) {
+		
+		ModelAndView mv = new ModelAndView("pessoas/formCadEntrega");
+		
+		contaPessoas contas = cr.findById(contaId);
+		mv.addObject("contaLogado",contas);
+		
+		return mv;
+//		return "pessoas/formCadEntrega";
 	}
 	
 	@RequestMapping(value="/continuarCadProduto", method=RequestMethod.POST)
 	public String resPedido(cadastroDeProdutos produtos, contaPessoas conta) {
+		produtos.setConta(conta);
 		cpr.save(produtos);
 		ModelAndView mv = new ModelAndView("continuarCadProduto");
 		Iterable<cadastroDeProdutos> listaDeProdutos = cpr.findAll();
@@ -51,13 +60,16 @@ public class PessoasController {
 	}
 	
 	@RequestMapping(value="/entrar", method=RequestMethod.POST)
-	public String form(contaPessoas conta) {
+	public ModelAndView form(contaPessoas conta) {
 		
 		if(confirmarAssinatura(conta)) {
-		//pegar valor do banco e injetar em alguma coluna PK
-			return"pessoas/pgiCliente";
+			ModelAndView mv = new ModelAndView("pgiCliente");
+			contaPessoas contas = cr.findByLogin(conta.getLogin());
+			mv.addObject("contaLogado",contas);
+			
+			return mv;
 		}else {
-			return "homeMercurio";
+			return null;
 		}
 		
 		
@@ -82,9 +94,11 @@ public class PessoasController {
 	
 	@RequestMapping(value="/cadastrar", method=RequestMethod.POST)
 	public String form(cadastroPessoas pessoas, localizacaoPessoas localizacao, contaPessoas conta) {
-
+		
 		pr.save(pessoas);
+		localizacao.setCadastro(pessoas);
 		lr.save(localizacao);
+		conta.setCadastro(pessoas);
 		cr.save(conta);
 		
 		return "homeMercurio";
@@ -100,7 +114,7 @@ public class PessoasController {
 	
 	@RequestMapping(value= "/listarDeProdutos", method=RequestMethod.GET)
 	public ModelAndView cadastroDeProdutos() {
-		ModelAndView mv = new ModelAndView("pessoas/resPedido");
+		ModelAndView mv = new ModelAndView("resPedido");
 		Iterable<cadastroDeProdutos> listaDeProdutos = cpr.findAll();
 		mv.addObject("listaInformacoes",listaDeProdutos);
 		return mv;

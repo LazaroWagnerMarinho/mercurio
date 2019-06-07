@@ -6,6 +6,8 @@ import com.tranporteMercadoria.mercurio.models.cadastroPessoas;
 
 public interface PessoasRepository extends JpaRepository<cadastroPessoas, Long>{
 	
-	cadastroPessoas findById(long id); 
+	cadastroPessoas findById(long id);
+	
+	cadastroPessoas findByNome(String nome);
 
 }

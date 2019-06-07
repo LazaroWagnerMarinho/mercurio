@@ -25,11 +25,11 @@ public class cadastroPessoas implements Serializable {
 	private String celular;
 	private String telefone;
 	
-	@OneToOne
-	private localizacaoPessoas localizacao;
-	
-	@OneToOne
-	private contaPessoas conta;
+//	@OneToOne
+//	private localizacaoPessoas localizacao;
+//	
+//	@OneToOne
+//	private contaPessoas conta;
 	
 	
 	public long getId() {
@@ -68,18 +68,7 @@ public class cadastroPessoas implements Serializable {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	public localizacaoPessoas getLocalizacao() {
-		return localizacao;
-	}
-	public void setLocalizacao(localizacaoPessoas localizacao) {
-		this.localizacao = localizacao;
-	}
-	public contaPessoas getConta() {
-		return conta;
-	}
-	public void setConta(contaPessoas conta) {
-		this.conta = conta;
-	}
+
 
 
 }

@@ -1,5 +1,8 @@
 package com.tranporteMercadoria.mercurio.controllers;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,10 +34,10 @@ public class PessoasController {
 	private CadProdutoRepository cpr;
 	
 	
-	@RequestMapping(value="/cadastrarEntrega/{contaId}", method=RequestMethod.GET)
-	public ModelAndView formCadEntrega(@PathVariable("contaId") long contaId) {
+	@RequestMapping(value="{contaId}")
+	public ModelAndView formCadEntrega(@PathVariable("contaId") long contaId){
 		
-		ModelAndView mv = new ModelAndView("pessoas/formCadEntrega");
+		ModelAndView mv = new ModelAndView("formCadEntrega");
 		
 		contaPessoas contas = cr.findById(contaId);
 		mv.addObject("contaLogado",contas);
@@ -44,13 +47,13 @@ public class PessoasController {
 	}
 	
 	@RequestMapping(value="/continuarCadProduto", method=RequestMethod.POST)
-	public String resPedido(cadastroDeProdutos produtos, contaPessoas conta) {
-		produtos.setConta(conta);
+	public String resPedido(HttpServletRequest request,cadastroDeProdutos produtos, contaPessoas conta) {
+//		produtos.setConta(conta);
 		cpr.save(produtos);
-		ModelAndView mv = new ModelAndView("continuarCadProduto");
-		Iterable<cadastroDeProdutos> listaDeProdutos = cpr.findAll();
-		mv.addObject("listaInformacoes",listaDeProdutos);
-		return "pessoas/resPedido";
+//		ModelAndView mv = new ModelAndView("continuarCadProduto");
+//		Iterable<cadastroDeProdutos> listaDeProdutos = cpr.findAll();
+//		mv.addObject("listaInformacoes",listaDeProdutos);
+		return "resPedido";
 	}
 	
 	
@@ -60,11 +63,15 @@ public class PessoasController {
 	}
 	
 	@RequestMapping(value="/entrar", method=RequestMethod.POST)
-	public ModelAndView form(contaPessoas conta) {
+	public ModelAndView form(HttpServletRequest request, contaPessoas conta) {
 		
 		if(confirmarAssinatura(conta)) {
-			ModelAndView mv = new ModelAndView("pgiCliente");
 			contaPessoas contas = cr.findByLogin(conta.getLogin());
+			HttpSession session=request.getSession();
+			session.setAttribute("usuario",contas);
+	        
+			ModelAndView mv = new ModelAndView("pgiCliente");
+//			contaPessoas contas = cr.findByLogin(conta.getLogin());
 			mv.addObject("contaLogado",contas);
 			
 			return mv;
@@ -74,6 +81,8 @@ public class PessoasController {
 		
 		
 	}
+	
+	
 	
 	@RequestMapping("/pontoA")
 	public String pontoA() {

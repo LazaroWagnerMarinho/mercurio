@@ -48,6 +48,9 @@ public class PessoasController {
 	
 	@RequestMapping(value="/continuarCadProduto", method=RequestMethod.POST)
 	public String resPedido(HttpServletRequest request,cadastroDeProdutos produtos, contaPessoas conta) {
+		HttpSession httpSession = request.getSession(false);
+		Object idDoUsuarioLogado = httpSession.getAttribute("usuario");
+		
 //		produtos.setConta(conta);
 		cpr.save(produtos);
 //		ModelAndView mv = new ModelAndView("continuarCadProduto");
@@ -68,7 +71,7 @@ public class PessoasController {
 		if(confirmarAssinatura(conta)) {
 			contaPessoas contas = cr.findByLogin(conta.getLogin());
 			HttpSession session=request.getSession();
-			session.setAttribute("usuario",contas);
+			session.setAttribute("usuario",contas.getId());
 	        
 			ModelAndView mv = new ModelAndView("pgiCliente");
 //			contaPessoas contas = cr.findByLogin(conta.getLogin());

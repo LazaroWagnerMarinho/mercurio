@@ -1,8 +1,8 @@
 $(document).ready(function(){
-	$("#cpf").mask('000.000.000-00', {reverse: true});
-	$('#celular').mask('(99) 99999-9999');
-	$('#telefone').mask('(99) 9999-9999');
-	$('#cep').mask('00.000-000', {reverse: true});
+//	$("#cpf").mask('000.000.000-00', {reverse: true});
+	$('#celularContatoColeta, #celularContatoEntrega').mask('(99) 99999-9999');
+//	$('#telefone').mask('(99) 9999-9999');
+	$('#cepColeta, #cepEntrega').mask('00.000-000', {reverse: true});
 });
 
 //function home(){
@@ -12,15 +12,30 @@ $(document).ready(function(){
 var inputEnd;
 
 function limpar(){
-	$('#nome')[0].value="";
-	$('#telefone')[0].value="";
-	$('#cep')[0].value="";
-	$('#endereco')[0].value="";
+	$('#tituloEndColeta')[0].value="";
+	$('#celularContatoColeta')[0].value="";
+	$('#cepColeta')[0].value="";
+	$('#cepColetaEndereco')[0].value="";
 	$('#numero')[0].value="";
 	$('#complemento')[0].value="";
-	$('#bairro')[0].value="";
-	$('#cidade')[0].value="";
-	$('#uf')[0].value="";
+	$('#cepColetaBairro')[0].value="";
+	$('#cepColetaCidade')[0].value="";
+	$('#cepColetaUf')[0].value="";
+	
+	$('#tituloEndEntrega')[0].value="";
+	$('#celularContatoEntrega')[0].value="";
+	$('#cepEntrega')[0].value="";
+	$('#cepEntregaEndereco')[0].value="";
+	$('#numeroEntrega')[0].value="";
+	$('#complementoEntrega')[0].value="";
+	$('#cepEntregaBairro')[0].value="";
+	$('#cepEntregaCidade')[0].value="";
+	$('#cepEntregaUf')[0].value="";
+	
+	$('#pesoprod')[0].value="";
+	$('#alturaprod')[0].value="";
+	$('#largprod')[0].value="";
+	$('#profprod')[0].value="";
 	
 }
 
@@ -81,4 +96,9 @@ function meu_callback(conteudo) {
         limpa_formulário_cep();
         alert("CEP não encontrado.");
     }
+}
+
+function salvarDadosProdutos(idLogin){
+	alert(idLogin);
+	
 }

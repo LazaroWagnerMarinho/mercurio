@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<html lxmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
   <meta charset="utf-8">
@@ -34,7 +35,7 @@
 	  </button>
 	<!-- Fim Botão de menu responsivo -->
 	  
-	  <div class="collapse navbar-collapse" id="navbarSupportedContent-333" th:each="conta : ${contaLogado}">
+	  <div method="post" action="cadastrarEntrega" class="collapse navbar-collapse" id="navbarSupportedContent-333" th:each="conta : ${contaLogado}">
 	    <ul class="navbar-nav mr-auto">
 		  <li class="nav-item active">
 		
@@ -46,7 +47,7 @@
 	     
 	      
 	      <li class="nav-item">
-	        <a th:href="${(#mvc.url('cr#formCadEntrega').arg(0, conta.id)).build()}" class="nav-link"><i class="fas fa-motorcycle"></i>Nova Entrega</a>
+	        <a th:href="${(#mvc.url('PC#formCadEntrega').arg(0, conta.id)).build()}" class="nav-link"><i class="fas fa-motorcycle"></i>Nova Entrega</a>
 	      </li>
 			   
 	    </ul>
@@ -143,19 +144,22 @@
 
   <!-- SCRIPTS -->
   <!-- JQuery -->
-  <script type="text/javascript" src="MDB/js/jquery-3.3.1.min.js"></script>
-  <!-- Bootstrap tooltips -->
+<!--   <script type="text/javascript" src="MDB/js/jquery-3.3.1.min.js"></script>
+  Bootstrap tooltips
   <script type="text/javascript" src="MDB/js/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="MDB/js/bootstrap.min.js"></script>
+  Bootstrap core JavaScript
+  <script type="text/javascript" src="MDB/js/bootstrap.min.js"></script> -->
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="MDB/js/mdb.min.js"></script>
   <script type="text/javascript" src="MDB/js/addons/datatables.min.js"></script>
-  <script typo="text/javascript">
-  $(document).ready(function () {
-$('#dtBasicExample').DataTable();
-$('.dataTables_length').addClass('bs-select');
-});
+  <script type="text/javascript" src="MDB/js/pgiCliente.js"></script>
+  <script type="text/javascript">
+  
+  	$(document).ready(function () {
+		$('#dtBasicExample').DataTable();
+		$('.dataTables_length').addClass('bs-select');
+	});
+  	
   </script>
 </body>
 

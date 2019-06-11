@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Resumo do Pedido</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="MDB/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="MDB/css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="MDB/css/style.css" rel="stylesheet">
+  <link href="MDB/css/home.css" rel="stylesheet">
+  <!-- MDBootstrap Datatables  -->
+<link href="MDB/css/addons/datatables.min.css" rel="stylesheet">
+ <!-- MDBootstrap Datatables  -->
+
+</head>
+
+<body>
+
+<!--Navbar -->
+	<nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color cabecalho">
+	
+	 
+	<!-- Início Botão de menu responsivo -->
+	 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+	    aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	<!-- Fim Botão de menu responsivo -->
+	  
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+	    <ul class="navbar-nav mr-auto">
+		  <li class="nav-item active">
+		
+		  </li>
+	       <li class="nav-item active">
+	        <a class="nav-link" href="minhaInfoAtendente.html"> <i class="far fa-user-circle"></i>Minhas Informações<span class="sr-only">(current)</span>
+	        </a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="formCadEntregaAtendente.html"> <i class="fas fa-motorcycle"></i>Nova Entrega</a>
+	      </li>
+	           <li class="nav-item">
+	        <a class="nav-link" href="RelClientesAtendente.html"> Relatório de Clientes</a>
+	      </li>
+
+			   
+	    </ul>
+		<!-- INÍCIO Botão de Sair -->
+		<form class="form-inline">
+		
+      <div class="md-form my-0">
+	  
+	  
+       <a  href="pgiAtendente.html"> Bem-vindo, Sr(a).........</a>
+      </div>
+    </form>
+	
+		<form class="form-inline">
+		
+      <div class="md-form my-0">
+	  
+	  
+         <button   type="button" class="btn btn-danger btn-sm"> <i class="fas fa-sign-out-alt"></i>Sair</button>
+      </div>
+    </form>
+	  <!-- FIM Botão de Sair -->
+	  </div>
+	</nav>
+	
+	
+	<div class="text-center"> <h1> Resumo do Pedido </h1></div>
+
+	
+    
+	<!--  Início do Grid de Resumo de Pedido -->			 
+		<div class="row d-flex justify-content-center">
+
+			<!-- Grid column -->
+			<div class="col-lg-4 col-md-12 mb-4">
+
+				<div class="card">
+					<div class="card-body">
+						<h2 class="font-weight-bold deep-orange-lighter-hover mb-3">Endereço de Coleta (Ponto A):</h2>
+						<p class="brown-lighter-hover">Dados do BD Abaixo Ex ( Minha Casa - Rua Magnólia 122, Copacabana 19828-990)</p>
+					</div>
+				<div class="card-body">
+					<h2 class="font-weight-bold deep-orange-lighter-hover mb-3">Endereço de Entrega (Ponto B): </h2>
+					<p class="brown-lighter-hover">Dados do BD Abaixo Ex ( Minha Casa - Rua Magnólia 122, Copacabana 19828-990)</p>
+				</div>
+				<div class="card-body">
+					<h2 class="font-weight-bold deep-orange-lighter-hover mb-3">Informações do Produto: </h2>
+					<p class="brown-lighter-hover">Volume: (Fórmula ALTURA X COMPRIMENTO X LARGURA) </p>
+					<p class="brown-lighter-hover">Peso: (Consuslta direto do BD)     </p>
+				</div>
+				<div class="card-body">
+					<h2 class="font-weight-bold deep-orange-lighter-hover mb-3">Preço: </h2>
+					<p class="brown-lighter-hover">Fórmula: R$ (Volume*Peso)*distância entre pontos*2,5</p>
+					<p>Obs: Valor pago na coleta (Cartão ou dinheiro).</p>
+				</div>
+				
+				</div>
+
+			</div>
+              
+		</div>
+        <!--  Fim do Grid de Resumo de Pedido -->		
+			
+
+
+					<!-- Ínicio botões de ação do Cadastro -->
+					  
+					 <div class="text-center">
+				       
+				        	<button class="btn btn-danger btn-rounded" onclick="limpar()">Cancelar</button>
+				        
+				    	    <button class="btn btn-default btn-rounded" type="submit"><a >Realizar Entrega</button>
+				      
+				      </div>
+					  
+					<!--  Fim botões de ação do Cadastro -->
+
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="MDB/js/jquery-3.3.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="MDB/js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="MDB/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="MDB/js/mdb.min.js"></script>
+
+</body>
+</html>

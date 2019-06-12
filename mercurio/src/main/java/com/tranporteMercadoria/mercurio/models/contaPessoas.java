@@ -24,6 +24,7 @@ public class contaPessoas implements Serializable{
 	private String login;
 	private String senha;
 	private String senhaconfirma;
+	private int nivel;
 	
 	@OneToOne
 	private cadastroPessoas cadastro;
@@ -63,6 +64,12 @@ public class contaPessoas implements Serializable{
 	}
 	public void setSenhaconfirma(String senhaconfirma) {
 		this.senhaconfirma = senhaconfirma;
+	}
+	public int getNivel() {
+		return nivel;
+	}
+	public void setNivel(int nivel) {
+		this.nivel = nivel;
 	}
 	public cadastroPessoas getCadastro() {
 		return cadastro;

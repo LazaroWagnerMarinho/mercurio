@@ -52,14 +52,14 @@
 			   
 	    </ul>
 		<!-- INÍCIO Botão de Sair -->
-		<form class="form-inline">
-		
-      <div class="md-form my-0">
-	  
-	  
-       <a  href="pgiCliente.html"> Bem-vindo, Sr(a).........</a>
-      </div>
-    </form>
+		<form class="form-inline" th:each="usuario : ${contaUsuario}">
+			
+	      <div class="md-form my-0">
+		  
+		  
+	       <a  href="pgiCliente.html"> Bem-vindo, Sr(a) <span th:text="${usuario.cadastro.nome}"></a>
+	      </div>
+	    </form>
 	
 		<form class="form-inline">
 		
@@ -84,10 +84,10 @@
 			<!-- Grid column -->
 			<div class="col-lg-4 col-md-12 mb-4">
 
-				<div class="card">
+				<div class="card" th:each="listaDeProdutos : ${listaInformacoes}">
 					<div class="card-body">
 						<h2 class="font-weight-bold deep-orange-lighter-hover mb-3">Endereço de Coleta (Ponto A):</h2>
-						<p class="brown-lighter-hover"  th:each="listaDeProdutos : ${listaInformacoes}">
+						<p class="brown-lighter-hover">
 							<span th:text="${listaDeProdutos.compl_Coleta}"></span>
 							<span th:text="${listaDeProdutos.end_Coleta}"></span>
 							<span th:text="${listaDeProdutos.bairro_Coleta}"></span>
@@ -97,7 +97,13 @@
 					</div>
 				<div class="card-body">
 					<h2 class="font-weight-bold deep-orange-lighter-hover mb-3">Endereço de Entrega (Ponto B): </h2>
-					<p class="brown-lighter-hover">Dados do BD Abaixo Ex ( Minha Casa - Rua Magnólia 122, Copacabana 19828-990)</p>
+					<p class="brown-lighter-hover">
+							<span th:text="${listaDeProdutos.compl_Entrega}"></span>
+							<span th:text="${listaDeProdutos.end_Entrega}"></span>
+							<span th:text="${listaDeProdutos.bairro_Entrega}"></span>
+							<span th:text="${listaDeProdutos.uf_Entrega}"></span>
+							<span th:text="${listaDeProdutos.cep_Entrega}"></span>
+						</p>
 				</div>
 				<div class="card-body">
 					<h2 class="font-weight-bold deep-orange-lighter-hover mb-3">Informações do Produto: </h2>
@@ -125,7 +131,7 @@
 				       
 				        	<button class="btn btn-danger btn-rounded" onclick="limpar()">Cancelar</button>
 				        
-				    	    <button class="btn btn-default btn-rounded" type="submit"><a >Finalizar Pedido</button>
+				    	    <a class="btn btn-default btn-rounded" href="/paginaInicial">Finalizar Pedido</a>
 				      
 				      </div>
 					  

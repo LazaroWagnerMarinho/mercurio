@@ -1,5 +1,6 @@
 package com.tranporteMercadoria.mercurio.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -47,6 +48,30 @@ public class PessoasController {
 		return mv;
 	}
 	
+	@RequestMapping(value="cadastrarNovoProdutoAtendente")
+	public ModelAndView formCadEntregaAtendente(HttpServletRequest request){
+		HttpSession httpSession = request.getSession(false);
+		Long idDoUsuarioLogado = (Long) httpSession.getAttribute("usuario");
+		contaPessoas conta = cr.findById(idDoUsuarioLogado);
+		ModelAndView mv = new ModelAndView("formCadEntregaAtendente");
+		mv.addObject("contaLogado",conta);
+		
+		return mv;
+	}
+	
+	@RequestMapping("/{codigoProduto}")
+	public ModelAndView EfetuarEntrega(@PathVariable("codigoProduto") long codigoProduto, HttpServletRequest request){
+		HttpSession httpSession = request.getSession(false);
+		Long idDoUsuarioLogado = (Long) httpSession.getAttribute("usuario");
+		contaPessoas conta = cr.findById(idDoUsuarioLogado);
+		cadastroDeProdutos produto = cpr.findById(codigoProduto);
+		ModelAndView mv = new ModelAndView("EfetuarEntrega");
+		mv.addObject("contaUsuario", conta);
+		mv.addObject("produtoEntrega", produto);
+		return mv;
+	}
+	
+	
 	@RequestMapping(value="/continuarCadProduto", method=RequestMethod.POST)
 	public ModelAndView resPedido(HttpServletRequest request,cadastroDeProdutos produtos) {
 		HttpSession httpSession = request.getSession(false);
@@ -62,6 +87,22 @@ public class PessoasController {
 		return mv;
 	}
 	
+	
+	@RequestMapping(value="/resPedidoAtendente", method=RequestMethod.POST)
+	public ModelAndView resPedidoAtendente(HttpServletRequest request,cadastroDeProdutos produtos) {
+		HttpSession httpSession = request.getSession(false);
+		Long idDoUsuarioLogado = (Long) httpSession.getAttribute("usuario");
+		
+		contaPessoas conta = cr.findById(idDoUsuarioLogado);
+		produtos.setConta(conta);
+		cpr.save(produtos);
+		ModelAndView mv = new ModelAndView("resPedidoAtendente");
+		Optional<com.tranporteMercadoria.mercurio.models.cadastroDeProdutos> infoDeProdutos = cpr.findById(produtos.getId());
+		mv.addObject("contaUsuario", conta);
+		mv.addObject("listaInformacoes",infoDeProdutos.get());
+		return mv;
+	}	
+	
 	@RequestMapping(value="paginaInicial")
 	public ModelAndView pgInicial(HttpServletRequest request){
 		HttpSession httpSession = request.getSession(false);
@@ -69,6 +110,8 @@ public class PessoasController {
 		contaPessoas conta = cr.findById(idDoUsuarioLogado);
 		ModelAndView mv = new ModelAndView("pgiCliente");
 		mv.addObject("contaLogado",conta);
+		Iterable<cadastroDeProdutos> listaDeProdutos = cpr.findAll();
+		mv.addObject("listaDeProdutosPorUsuario", listaDeProdutos);
 		
 		return mv;
 	}
@@ -84,8 +127,8 @@ public class PessoasController {
 			contaPessoas contas = cr.findByLogin(conta.getLogin());
 			HttpSession session=request.getSession();
 			session.setAttribute("usuario",contas.getId());
-			if(contas.getNivel() == 3) {
-				ModelAndView mv = new ModelAndView("pgiCliente");
+			if(contas.getNivel() == 3) {				
+				ModelAndView mv = new ModelAndView("pgiAtendente");
 				mv.addObject("contaLogado",contas);
 				
 				return mv;
@@ -97,14 +140,16 @@ public class PessoasController {
 				
 				return mv;
 			}else if(contas.getNivel() == 4) {
-				ModelAndView mv = new ModelAndView("pgiMotorista");
+				ModelAndView mv = new ModelAndView("pgiGerente");
 				mv.addObject("contaLogado",contas);
 				
 				return mv;
 			}else {
+				contaPessoas contaUsuario = cr.findById(contas.getId());
 				ModelAndView mv = new ModelAndView("pgiCliente");
-				mv.addObject("contaLogado",contas);				
-				
+				mv.addObject("contaLogado",contas);		
+				Iterable<cadastroDeProdutos> listaDeProdutos = cpr.findAll();
+				mv.addObject("listaDeProdutosPorUsuario", listaDeProdutos);
 				return mv;
 			}			
 			
@@ -115,7 +160,7 @@ public class PessoasController {
 		
 	}
 	
-	
+
 	@RequestMapping(value="/cadastrar", method=RequestMethod.POST)
 	public String form(cadastroPessoas pessoas, localizacaoPessoas localizacao, contaPessoas conta) {
 		

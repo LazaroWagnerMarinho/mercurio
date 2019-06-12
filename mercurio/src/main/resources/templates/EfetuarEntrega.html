@@ -51,19 +51,15 @@
 		<!-- INÍCIO Botão de Sair -->
 		<form class="form-inline">
 		
-      <div class="md-form my-0">
-	  
-	  
-       <a  href="pgiMotorista.html"> Bem-vindo, Sr(a).........</a>
-      </div>
+		<div class="md-form my-0" th:each="conta : ${contaUsuario}">	  
+       		<a  href="pgiMotorista.html"> Bem-vindo, Sr(a) <span th:text="${conta.cadastro.nome}"></a>
+      	</div>
     </form>
 	
 		<form class="form-inline">
 		
       <div class="md-form my-0">
-	  
-	  
-         <button   type="button" class="btn btn-danger btn-sm"> <i class="fas fa-sign-out-alt"></i>Sair</button>
+         <a href="/"  type="button" class="btn btn-danger btn-sm"> <i class="fas fa-sign-out-alt"></i>Sair</a>
       </div>
     </form>
 	  <!-- FIM Botão de Sair -->
@@ -76,7 +72,7 @@
 	
     
 	<!--  Início do Grid de Resumo de Pedido -->			 
-		<div class="row d-flex justify-content-center">
+		<div class="row d-flex justify-content-center" th:each="produtoDoUsuario : ${produtoEntrega}">
 
 			<!-- Grid column -->
 			<div class="col-lg-4 col-md-12 mb-4">
@@ -84,13 +80,25 @@
 				<div class="card">
 					<div class="card-body">
 						<h2 class="font-weight-bold deep-orange-lighter-hover mb-3">Endereço de Coleta (Ponto A):</h2>
-						<p class="brown-lighter-hover">Dados do BD Abaixo Ex ( Minha Casa - Rua Magnólia 122, Copacabana 19828-990)</p>
-						<p class="brown-lighter-hover">Dados do BD Abaixo Ex ( Nome do Contato de Coleta e número)</p>
+						<p class="brown-lighter-hover">
+							<p>Complemento: <span th:text="${produtoDoUsuario.compl_Coleta}"></span></p>
+							<p>Endereço: <span th:text="${produtoDoUsuario.end_Coleta}"></span></p>
+							<p>Bairro: <span th:text="${produtoDoUsuario.bairro_Coleta}"></span></p>
+							<p>UF: <span th:text="${produtoDoUsuario.uf_Coleta}"></span></p>
+							<p>CEP: <span th:text="${produtoDoUsuario.cep_Coleta}"></span></P>
+						</p>						
+						<p>Nome: <span th:text="${produtoDoUsuario.nome_Coleta}"></span></p>
 					</div>
 				<div class="card-body">
 					<h2 class="font-weight-bold deep-orange-lighter-hover mb-3">Endereço de Entrega (Ponto B): </h2>
-					<p class="brown-lighter-hover">Dados do BD Abaixo Ex ( Minha Casa - Rua Magnólia 122, Copacabana 19828-990)</p>
-					<p class="brown-lighter-hover">Dados do BD Abaixo Ex ( Nome do Contato de Entrega e número)</p>
+					<p class="brown-lighter-hover">
+							<p>Complemento: <span th:text="${produtoDoUsuario.compl_Entrega}"></span></p>
+							<p>Endereço: <span th:text="${produtoDoUsuario.end_Entrega}"></span></p>
+							<p>Bairro: <span th:text="${produtoDoUsuario.bairro_Entrega}"></span></p>
+							<p>UF: <span th:text="${produtoDoUsuario.uf_Entrega}"></span></p>
+							<p>CEP: <span th:text="${produtoDoUsuario.cep_Entrega}"></span></P>
+						</p>						
+						<p>Nome: <span th:text="${produtoDoUsuario.nome_Entrega}"></span></p>
 				</div>
 				<div class="card-body">
 					<h2 class="font-weight-bold deep-orange-lighter-hover mb-3">Informações do Produto: </h2>

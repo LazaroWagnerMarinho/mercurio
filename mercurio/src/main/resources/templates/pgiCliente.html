@@ -47,7 +47,7 @@
 	     
 	      
 	      <li class="nav-item">
-	        <a th:href="${(#mvc.url('PC#formCadEntrega').arg(0, conta.id)).build()}" class="nav-link"><i class="fas fa-motorcycle"></i>Nova Entrega</a>
+	        <a href="cadastrarNovoProduto" class="nav-link"><i class="fas fa-motorcycle"></i>Nova Entrega</a>
 	      </li>
 			   
 	    </ul>
@@ -60,12 +60,9 @@
        <a> Bem-vindo, Sr(a) <span th:text="${conta.cadastro.nome}"></a>
       </div>
     </form>
-		<form class="form-inline">
-		
+	<form class="form-inline">
       <div class="md-form my-0">
-	  
-	  
-         <button   type="button" class="btn btn-danger btn-sm"> <i class="fas fa-sign-out-alt"></i>Sair</button>
+         <a href="/"  type="button" class="btn btn-danger btn-sm"> <i class="fas fa-sign-out-alt"></i>Sair</a>
       </div>
     </form>
 	  <!-- FIM Botão de Sair -->
@@ -91,49 +88,16 @@
       </th>
     </tr>
   </thead>
-  <tbody>
+  <tbody th:each="listaProdutos : ${listaDeProdutosPorUsuario}">
     <tr>
       <td>1</td>
-      <td>Rua, numero e bairro</td>
-      <td>Tipo de produto</td>
-      <td>Rua, numero e bairro</td>
-      <td>Entregue</td>
-      <td><button class="btn btn-rounded btn-flat btn-sm"><i class="fas fa-eye pl-1"></i></button></td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Trabalho</td>
-      <td>Chave do Carro</td>
-      <td>Minha Casa</td>
+      <td><span th:text="${listaProdutos.end_Coleta}"></span></td>
+      <td><span th:text="${listaProdutos.tipo_Produtos}"></span></td>
+      <td><span th:text="${listaProdutos.end_Entrega}"></span></td>
       <td>Pendente</td>
-      <td><button class="btn btn-rounded btn-flat btn-sm"><i class="fas fa-eye pl-1"></i></button></td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Minha Casa</td>
-      <td>Cooler de bebidas</td>
-      <td>Casa da Praia</td>
-      <td>Pendente</td>
-      <td><button class="btn btn-rounded btn-flat btn-sm"><i class="fas fa-eye pl-1"></i></button></td>
-    </tr>
-  
+      <td><button type="button" class="btn btn-danger">Realizar Entrega</button></td>
+    </tr>  
   </tbody>
-  <tfoot>
-    <tr>
-      <th>Número
-      </th>
-      <th>Endereço de Coleta
-      </th>
-      <th>Produto
-      </th>
-      <th>Endereço de Entrega
-      </th>
-      <th>Status
-      </th>
-      <th> 
-      </th>
-    </tr>
-  </tfoot>
 </table>
 
 </div>

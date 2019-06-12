@@ -32,6 +32,7 @@ function limpar(){
 	$('#cepEntregaCidade')[0].value="";
 	$('#cepEntregaUf')[0].value="";
 	
+	$('tipo_Produtos')[0].value="";
 	$('#pesoprod')[0].value="";
 	$('#alturaprod')[0].value="";
 	$('#largprod')[0].value="";

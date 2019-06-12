@@ -34,7 +34,7 @@
 	  </button>
 	<!-- Fim Botão de menu responsivo -->
 	  
-	  <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent-333" th:each="conta : ${contaLogado}">
 	    <ul class="navbar-nav mr-auto">
 		  <li class="nav-item active">
 		
@@ -63,7 +63,7 @@
       <div class="md-form my-0">
 	  
 	  
-       <a  href="pgiAtendente.html"> Bem-vindo, Sr(a).........</a>
+       <a  href="pgiAtendente.html"> Bem-vindo, Sr(a) <span th:text="${conta.cadastro.nome}"></a>
       </div>
     </form>
 		<form class="form-inline">
@@ -71,7 +71,7 @@
       <div class="md-form my-0">
 	  
 	  
-         <button   type="button" class="btn btn-danger btn-sm"> <i class="fas fa-sign-out-alt"></i>Sair</button>
+         <a href="/"  type="button" class="btn btn-danger btn-sm"> <i class="fas fa-sign-out-alt"></i>Sair</a>
       </div>
     </form>
 	  <!-- FIM Botão de Sair -->

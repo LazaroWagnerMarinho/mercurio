@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -14,7 +15,7 @@ public class cadastroDeProdutos {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;	
-	private String titulo_End_Coleta;	
+	private String nome_Coleta;	
 	private String contato_Tel;	
 	private String cep_Coleta;	
 	private String end_Coleta;	
@@ -24,7 +25,7 @@ public class cadastroDeProdutos {
 	private String cidade_Coleta;
 	private String uf_Coleta;
 	
-	private String titulo_End_Entrega;	
+	private String nome_Entrega;	
 	private String contato_Tel_Entrega;	
 	private String cep_Entrega;	
 	private String end_Entrega;	
@@ -34,6 +35,7 @@ public class cadastroDeProdutos {
 	private String cidade_Entrega;
 	private String uf_Entrega;
 	
+	private String tipo_Produtos;
 	private double peso_Produto;
 	private double altura_Produto;
 	private double largura_Produto;
@@ -49,11 +51,11 @@ public class cadastroDeProdutos {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getTitulo_End_Coleta() {
-		return titulo_End_Coleta;
+	public String getNome_Coleta() {
+		return nome_Coleta;
 	}
-	public void setTitulo_End_Coleta(String titulo_End_Coleta) {
-		this.titulo_End_Coleta = titulo_End_Coleta;
+	public void setNome_Coleta(String nome_Coleta) {
+		this.nome_Coleta = nome_Coleta;
 	}
 	public String getContato_Tel() {
 		return contato_Tel;
@@ -104,11 +106,11 @@ public class cadastroDeProdutos {
 	public void setUf_Coleta(String uf_Coleta) {
 		this.uf_Coleta = uf_Coleta;
 	}
-	public String getTitulo_End_Entrega() {
-		return titulo_End_Entrega;
+	public String getNome_Entrega() {
+		return nome_Entrega;
 	}
-	public void setTitulo_End_Entrega(String titulo_End_Entrega) {
-		this.titulo_End_Entrega = titulo_End_Entrega;
+	public void setNome_Entrega(String nome_Entrega) {
+		this.nome_Entrega = nome_Entrega;
 	}
 	public String getContato_Tel_Entrega() {
 		return contato_Tel_Entrega;
@@ -158,6 +160,13 @@ public class cadastroDeProdutos {
 	}
 	public void setUf_Entrega(String uf_Entrega) {
 		this.uf_Entrega = uf_Entrega;
+	}
+	
+	public String getTipo_Produtos() {
+		return tipo_Produtos;
+	}
+	public void setTipo_Produtos(String tipo_Produtos) {
+		this.tipo_Produtos = tipo_Produtos;
 	}
 	public double getPeso_Produto() {
 		return peso_Produto;

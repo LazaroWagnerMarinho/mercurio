@@ -9,4 +9,5 @@ public interface ContaRepository extends JpaRepository<contaPessoas, String> {
 
 	contaPessoas findById(long id);
 	contaPessoas findByLogin(String login);
+
 }

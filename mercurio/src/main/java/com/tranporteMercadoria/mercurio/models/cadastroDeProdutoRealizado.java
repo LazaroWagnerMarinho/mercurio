@@ -4,13 +4,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Tabela_Cad_Produto")
-public class cadastroDeProdutos {
+@Table(name="Tabela_De_Produto_Realizado")
+public class cadastroDeProdutoRealizado {
+
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -207,12 +207,4 @@ public class cadastroDeProdutos {
 	public void setConta(contaPessoas conta) {
 		this.conta = conta;
 	}
-	
-	
-	
-	
-	
-	
-	
-
 }

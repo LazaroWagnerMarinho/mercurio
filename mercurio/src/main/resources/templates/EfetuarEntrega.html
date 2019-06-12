@@ -22,7 +22,7 @@
 </head>
 
 <body>
-
+<form th:each="produtoDoUsuario : ${produtoEntrega}">
 <!--Navbar -->
 	<nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color cabecalho">
 	
@@ -72,7 +72,7 @@
 	
     
 	<!--  Início do Grid de Resumo de Pedido -->			 
-		<div class="row d-flex justify-content-center" th:each="produtoDoUsuario : ${produtoEntrega}">
+		<div class="row d-flex justify-content-center">
 
 			<!-- Grid column -->
 			<div class="col-lg-4 col-md-12 mb-4">
@@ -127,10 +127,10 @@
 				       
 				        	<button class="btn btn-danger btn-rounded" onclick="limpar()">Cancelar</button>
 				        
-				    	    <button class="btn btn-default btn-rounded" type="submit"><a >Realizar Entrega</button>
-				      
+				    	    <a th:href="@{'/finalizarEntrega/'+${produtoDoUsuario.id}}" class="btn btn-default btn-rounded" type="submit">Realizar Entrega</a>
+				      			<!-- <span th:text="${produtoDoUsuario.id}" th:remove="tag"></span> -->
 				      </div>
-					  
+</form>					  
 					<!--  Fim botões de ação do Cadastro -->
 
 

@@ -48,7 +48,7 @@
 	        <a class="nav-link" href="cadastrarNovoProdutoAtendente"> <i class="fas fa-motorcycle"></i>Nova Entrega</a>
 	      </li>
 	          <li class="nav-item">
-	        <a class="nav-link" href="RelClientesAtendente.html"> Relatório de Clientes</a>
+	        <a class="nav-link" href="relatorioCliente"> Relatório de Clientes</a>
 	      </li>
 			   
 	    </ul>
@@ -73,67 +73,38 @@
 	
 	<div class="table-responsive text-nowrap">
 
- <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
-  <thead>
-    <tr>
-      <th class="th-sm">Número
-      </th>
-      <th class="th-sm">Endereço de Coleta
-      </th>
-      <th class="th-sm">Produto
-      </th>
-      <th class="th-sm">Endereço de Entrega
-      </th>
-      <th class="th-sm">Status
-      </th>
-      <th >
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>Rua, numero e bairro</td>
-      <td>Tipo de produto</td>
-      <td>Rua, numero e bairro</td>
-      <td>Pendente</td>
-      <td><button type="button" class="btn btn-danger">Realizar Entrega</button></td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Rua, numero e bairro</td>
-      <td>Tipo de produto</td>
-      <td>Rua, numero e bairro</td>
-      <td>Pendente</td>
-      <td><button type="button" class="btn btn-danger">Realizar Entrega</button></td>
-    </tr>
-    <tr>
-      <td>3</td>
-     <td>Rua, numero e bairro</td>
-      <td>Tipo de produto</td>
-      <td>Rua, numero e bairro</td>
-      <td>Pendente</td>
-      <td><button type="button" class="btn btn-danger">Realizar Entrega</button></td>
-    </tr>
-  
-  </tbody>
-  <tfoot>
-    <tr>
-      <th>Número
-      </th>
-      <th>Endereço de Coleta
-      </th>
-      <th>Produto
-      </th>
-      <th>Endereço de Entrega
-      </th>
-      <th>Status
-      </th>
-      <th> 
-      </th>
-    </tr>
-  </tfoot>
-</table>
+		 <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+		  <thead>
+		    <tr>
+		      <th class="th-sm">Número
+		      </th>
+		      <th class="th-sm">Endereço de Coleta
+		      </th>
+		      <th class="th-sm">Produto
+		      </th>
+		      <th class="th-sm">Endereço de Entrega
+		      </th>
+		      <th class="th-sm">Status
+		      </th>
+		      <th >
+		      </th>
+		    </tr>
+		  </thead>
+		  <tbody th:each="listaProdutos : ${listaDeProdutos}">
+		    <tr>
+		      <td>1</td>
+		      <td><span th:text="${listaProdutos.end_Coleta}"></span></td>
+		      <td><span th:text="${listaProdutos.tipo_Produtos}"></span></td>
+		      <td><span th:text="${listaProdutos.end_Entrega}"></span></td>
+	           	<td th:switch="${listaProdutos.entregaRealizado}">
+		      		<p th:case="'0'">Pedente</p>
+		      		<p th:case="'1'">Realizado</p>
+		      		
+		    	</td>
+		      <td><a th:href="${(#mvc.url('PC#EfetuarEntrega').arg(0, listaProdutos.id)).build()}" type="button" class="btn btn-danger">Realizar Entrega</a></td>
+		    </tr>  
+		  </tbody>
+		</table>
 
 </div>
   

@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tranporteMercadoria.mercurio.models.cadastroDeProdutoRealizado;
 import com.tranporteMercadoria.mercurio.models.cadastroDeProdutos;
 import com.tranporteMercadoria.mercurio.models.cadastroPessoas;
 import com.tranporteMercadoria.mercurio.models.contaPessoas;
 import com.tranporteMercadoria.mercurio.models.localizacaoPessoas;
+import com.tranporteMercadoria.mercurio.repository.CadDeProdutoRealizadoRepository;
 import com.tranporteMercadoria.mercurio.repository.CadProdutoRepository;
 import com.tranporteMercadoria.mercurio.repository.ContaRepository;
 import com.tranporteMercadoria.mercurio.repository.LocalizacaoRepository;
@@ -35,6 +37,9 @@ public class PessoasController {
 	
 	@Autowired
 	private CadProdutoRepository cpr;
+	
+	@Autowired
+	private CadDeProdutoRealizadoRepository cprr;
 	
 	
 	@RequestMapping(value="cadastrarNovoProduto")
@@ -65,9 +70,55 @@ public class PessoasController {
 		Long idDoUsuarioLogado = (Long) httpSession.getAttribute("usuario");
 		contaPessoas conta = cr.findById(idDoUsuarioLogado);
 		cadastroDeProdutos produto = cpr.findById(codigoProduto);
-		ModelAndView mv = new ModelAndView("EfetuarEntrega");
+		ModelAndView mv = new ModelAndView(direcionarPaginaPorUsuario(conta.getNivel()));
 		mv.addObject("contaUsuario", conta);
 		mv.addObject("produtoEntrega", produto);
+		return mv;
+	}
+	
+	private String direcionarPaginaPorUsuario(long nivel) {
+		if(nivel == 1) {
+			return "visPedido";
+		}else if(nivel == 2) {
+			return "EfetuarEntrega";
+		}else if(nivel == 3) {
+			return "EfetuarEntrega";
+		}
+		else {
+			return"paginaErro";
+		}
+	}
+	
+	@RequestMapping(value="/desativar/{idUsuario}", method=RequestMethod.GET)
+	public String desativar(@PathVariable("idUsuario") long idUsuario, HttpServletRequest request) {
+		cadastroPessoas pessoa = pr.findById(idUsuario);
+		pessoa.setAtivo(1);
+		pr.save(pessoa);
+		return "RelClientesAtendente";
+	}
+	
+	@RequestMapping(value="/ativar/{idUsuario}", method=RequestMethod.GET)
+	public String ativar(@PathVariable("idUsuario") long idUsuario, HttpServletRequest request) {
+		cadastroPessoas pessoa = pr.findById(idUsuario);
+		pessoa.setAtivo(0);
+		pr.save(pessoa);
+		return "RelClientesAtendente";
+	}
+
+	
+	@RequestMapping(value="/finalizarEntrega/{finalizar}", method=RequestMethod.GET)
+	public ModelAndView finalizando(@PathVariable("finalizar") int finalizar, HttpServletRequest request, cadastroDeProdutoRealizado produtoRealizado){
+		HttpSession httpSession = request.getSession(false);
+		Long idDoUsuarioLogado = (Long) httpSession.getAttribute("usuario");
+		contaPessoas conta = cr.findById(idDoUsuarioLogado);
+		cadastroDeProdutos produtoRealizados = cpr.findById(finalizar);
+		produtoRealizados.setEntregaRealizado(1);
+		cpr.save(produtoRealizados);
+		Iterable<cadastroDeProdutos> produtoPedente = cpr.findAll();
+		ModelAndView mv = new ModelAndView("pgiMotorista");
+		mv.addObject("contaUsuario", conta);
+		
+		mv.addObject("produtoEntrega", produtoPedente);
 		return mv;
 	}
 	
@@ -115,9 +166,22 @@ public class PessoasController {
 		
 		return mv;
 	}
+	
 	@RequestMapping(value="/cadastrar")
 	public String form() {
 		return "pessoas/formPessoas";
+	}
+	
+	@RequestMapping(value="/relatorioCliente")
+	public ModelAndView relatorio(HttpServletRequest request,cadastroPessoas pessoas) {
+		HttpSession httpSession = request.getSession(false);
+		Long idDoUsuarioLogado = (Long) httpSession.getAttribute("usuario");
+		contaPessoas conta = cr.findById(idDoUsuarioLogado);
+		ModelAndView mv = new ModelAndView("RelClientesAtendente");
+		mv.addObject("contaLogado",conta);
+		Iterable<cadastroPessoas> listaPessoas = pr.findAll();
+		mv.addObject("listaPessoas",listaPessoas);
+		return mv;
 	}
 	
 	@RequestMapping(value="/entrar", method=RequestMethod.POST)
@@ -129,7 +193,9 @@ public class PessoasController {
 			session.setAttribute("usuario",contas.getId());
 			if(contas.getNivel() == 3) {				
 				ModelAndView mv = new ModelAndView("pgiAtendente");
-				mv.addObject("contaLogado",contas);
+				Iterable<cadastroDeProdutos> listaDeProdutos = cpr.findAll();
+				mv.addObject("contaLogado",contas);				
+				mv.addObject("listaDeProdutos", listaDeProdutos);
 				
 				return mv;
 			}else if(contas.getNivel() == 2) {

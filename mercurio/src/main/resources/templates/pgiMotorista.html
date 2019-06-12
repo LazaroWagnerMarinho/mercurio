@@ -85,7 +85,10 @@
       <td><span th:text="${listaProdutos.end_Coleta}"></span></td>
       <td><span th:text="${listaProdutos.tipo_Produtos}"></span></td>
       <td><span th:text="${listaProdutos.end_Entrega}"></span></td>
-      <td>Pendente</td>
+      	<td th:switch="${listaProdutos.entregaRealizado}">
+    		<p th:case="'0'">Pedente</p>
+    		<p th:case="'1'">Realizado</p>    		
+  		</td>
       <td><a th:href="${(#mvc.url('PC#EfetuarEntrega').arg(0, listaProdutos.id)).build()}" type="button" class="btn btn-danger">Realizar Entrega</a></td>
     </tr>  
   </tbody>

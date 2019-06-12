@@ -24,6 +24,7 @@ public class cadastroPessoas implements Serializable {
 	private Date nascimento;
 	private String celular;
 	private String telefone;
+	private int ativo;
 	
 //	@OneToOne
 //	private localizacaoPessoas localizacao;
@@ -68,6 +69,13 @@ public class cadastroPessoas implements Serializable {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+	public int getAtivo() {
+		return ativo;
+	}
+	public void setAtivo(int ativo) {
+		this.ativo = ativo;
+	}
+	
 
 
 

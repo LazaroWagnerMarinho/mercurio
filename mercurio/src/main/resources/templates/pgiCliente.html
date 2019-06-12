@@ -35,7 +35,7 @@
 	  </button>
 	<!-- Fim Botão de menu responsivo -->
 	  
-	  <div method="post" action="cadastrarEntrega" class="collapse navbar-collapse" id="navbarSupportedContent-333" th:each="conta : ${contaLogado}">
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
 	    <ul class="navbar-nav mr-auto">
 		  <li class="nav-item active">
 		
@@ -47,24 +47,23 @@
 	     
 	      
 	      <li class="nav-item">
+
 	        <a href="cadastrarNovoProduto" class="nav-link"><i class="fas fa-motorcycle"></i>Nova Entrega</a>
+
 	      </li>
 			   
 	    </ul>
 		<!-- INÍCIO Botão de Sair -->
-		<form class="form-inline">
-		
-      <div class="md-form my-0">
-	  
-	  
-       <a> Bem-vindo, Sr(a) <span th:text="${conta.cadastro.nome}"></a>
-      </div>
-    </form>
-	<form class="form-inline">
-      <div class="md-form my-0">
-         <a href="/"  type="button" class="btn btn-danger btn-sm"> <i class="fas fa-sign-out-alt"></i>Sair</a>
-      </div>
-    </form>
+		<form class="form-inline">		
+	      <div class="md-form my-0" th:each="conta : ${contaLogado}">	  
+	       <a  href="pgiMotorista.html"> Bem-vindo, Sr(a) <span th:text="${conta.cadastro.nome}"></a>
+	      </div>
+	    </form>
+		<form class="form-inline">		
+	      <div class="md-form my-0">	  
+	         <a href="/"  type="button" class="btn btn-danger btn-sm"> <i class="fas fa-sign-out-alt"></i>Sair</a>
+	      </div>
+	    </form>
 	  <!-- FIM Botão de Sair -->
 	  </div>
 	</nav>
@@ -95,8 +94,8 @@
       <td><span th:text="${listaProdutos.tipo_Produtos}"></span></td>
       <td><span th:text="${listaProdutos.end_Entrega}"></span></td>
       <td>Pendente</td>
-      <td><button type="button" class="btn btn-danger">Realizar Entrega</button></td>
-    </tr>  
+      <td><a th:href="${(#mvc.url('PC#EfetuarEntrega').arg(0, listaProdutos.id)).build()}" class="btn btn-rounded btn-flat btn-sm"><i class="fas fa-eye pl-1"></i></a></td>
+    </tr>
   </tbody>
 </table>
 

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Relatório de Entregas</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="MDB/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="MDB/css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="MDB/css/style.css" rel="stylesheet">
+  <link href="MDB/css/home.css" rel="stylesheet">
+  <!-- MDBootstrap Datatables  -->
+<link href="MDB/css/addons/datatables.min.css" rel="stylesheet">
+ <!-- MDBootstrap Datatables  -->
+
+</head>
+
+<body>
+
+<!--Navbar -->
+	<nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color cabecalho">
+	
+	 
+	<!-- Início Botão de menu responsivo -->
+	 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+	    aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	<!-- Fim Botão de menu responsivo -->
+	  
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+	      <ul class="navbar-nav mr-auto">
+		  <li class="nav-item active">
+		
+		  </li>
+	       <li class="nav-item active">
+	        <a class="nav-link" href="minhaInfoGerente.html"> <i class="far fa-user-circle"></i>Minhas Informações<span class="sr-only">(current)</span>
+	        </a>
+	      </li>
+	     </li>
+	          <li class="nav-item">
+	        <a class="nav-link" href="relEntregas.html"> Relatório de Entregas</a>
+	      </li>
+	       
+	          <li class="nav-item">
+	        <a class="nav-link" href="relClientesGerente.html"> Relatório de Clientes</a>
+	      </li>
+		   </li>
+	          <li class="nav-item">
+	        <a class="nav-link" href="relFuncionarios.html"> Relatório de Funcionários</a>
+	      </li>
+			   
+	    </ul>
+		<!-- INÍCIO Botão de Sair -->
+		<form class="form-inline">
+		
+      <div class="md-form my-0">
+	  
+	  
+       <a  href="pgiAtendente.html"> Bem-vindo, Sr(a).........</a>
+      </div>
+    </form>
+		<form class="form-inline">
+		
+      <div class="md-form my-0">
+	  
+	  
+         <button   type="button" class="btn btn-danger btn-sm"> <i class="fas fa-sign-out-alt"></i>Sair</button>
+      </div>
+    </form>
+	  <!-- FIM Botão de Sair -->
+	  </div>
+	</nav>
+<div class="text-center">
+	 <div class="btn-group mr-2" role="group" aria-label="First group">
+		<button type="button" class="btn btn-default">2019</button>
+		
+	</div>
+	
+	
+	<h1> Espaço para o Gráfico o tipo de gráfico mais fácil  Somente as entregas com status Finalizados Não Pendnetes do ano todo</h1>
+	
+	
+ <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th class="th-sm">Número
+      </th>
+      <th class="th-sm">Endereço de Coleta
+      </th>
+      <th class="th-sm">Produto
+      </th>
+      <th class="th-sm">Endereço de Entrega
+      </th>
+      <th class="th-sm">Status
+      </th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Minha Casa</td>
+      <td>Envelope Privado</td>
+      <td>Trabalho</td>
+      <td>Pendente</td>
+    
+    <tr>
+      <td>2</td>
+      <td>Trabalho</td>
+      <td>Chave do Carro</td>
+      <td>Minha Casa</td>
+      <td>Pendente</td>
+      
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Minha Casa</td>
+      <td>Cooler de bebidas</td>
+      <td>Casa da Praia</td>
+      <td>Pendente</td>
+      
+    </tr>
+  
+  </tbody>
+  <tfoot>
+    <tr>
+      <th>Número
+      </th>
+      <th>Endereço de Coleta
+      </th>
+      <th>Produto
+      </th>
+      <th>Endereço de Entrega
+      </th>
+      <th>Status
+      </th>
+     
+    </tr>
+  </tfoot>
+</table>
+
+
+	</div>
+<!--/.Navbar -->
+
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="MDB/js/jquery-3.3.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="MDB/js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="MDB/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="MDB/js/mdb.min.js"></script>
+  <script type="text/javascript" src="MDB/js/addons/datatables.min.js"></script>
+  <script typo="text/javascript">
+  $(document).ready(function () {
+$('#dtBasicExample').DataTable();
+$('.dataTables_length').addClass('bs-select');
+});
+  </script>
+</body>
+
+</html>

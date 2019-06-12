@@ -1,5 +1,7 @@
 package com.tranporteMercadoria.mercurio.controllers;
 
+import java.util.Optional;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -34,32 +36,42 @@ public class PessoasController {
 	private CadProdutoRepository cpr;
 	
 	
-	@RequestMapping(value="{contaId}")
-	public ModelAndView formCadEntrega(@PathVariable("contaId") long contaId){
-		
+	@RequestMapping(value="cadastrarNovoProduto")
+	public ModelAndView formCadEntrega(HttpServletRequest request){
+		HttpSession httpSession = request.getSession(false);
+		Long idDoUsuarioLogado = (Long) httpSession.getAttribute("usuario");
+		contaPessoas conta = cr.findById(idDoUsuarioLogado);
 		ModelAndView mv = new ModelAndView("formCadEntrega");
-		
-		contaPessoas contas = cr.findById(contaId);
-		mv.addObject("contaLogado",contas);
+		mv.addObject("contaLogado",conta);
 		
 		return mv;
-//		return "pessoas/formCadEntrega";
 	}
 	
 	@RequestMapping(value="/continuarCadProduto", method=RequestMethod.POST)
-	public String resPedido(HttpServletRequest request,cadastroDeProdutos produtos, contaPessoas conta) {
+	public ModelAndView resPedido(HttpServletRequest request,cadastroDeProdutos produtos) {
 		HttpSession httpSession = request.getSession(false);
-		Object idDoUsuarioLogado = httpSession.getAttribute("usuario");
+		Long idDoUsuarioLogado = (Long) httpSession.getAttribute("usuario");
 		
-//		produtos.setConta(conta);
+		contaPessoas conta = cr.findById(idDoUsuarioLogado);
+		produtos.setConta(conta);
 		cpr.save(produtos);
-//		ModelAndView mv = new ModelAndView("continuarCadProduto");
-//		Iterable<cadastroDeProdutos> listaDeProdutos = cpr.findAll();
-//		mv.addObject("listaInformacoes",listaDeProdutos);
-		return "resPedido";
+		ModelAndView mv = new ModelAndView("resPedido");
+		Optional<com.tranporteMercadoria.mercurio.models.cadastroDeProdutos> infoDeProdutos = cpr.findById(produtos.getId());
+		mv.addObject("contaUsuario", conta);
+		mv.addObject("listaInformacoes",infoDeProdutos.get());
+		return mv;
 	}
 	
-	
+	@RequestMapping(value="paginaInicial")
+	public ModelAndView pgInicial(HttpServletRequest request){
+		HttpSession httpSession = request.getSession(false);
+		Long idDoUsuarioLogado = (Long) httpSession.getAttribute("usuario");
+		contaPessoas conta = cr.findById(idDoUsuarioLogado);
+		ModelAndView mv = new ModelAndView("pgiCliente");
+		mv.addObject("contaLogado",conta);
+		
+		return mv;
+	}
 	@RequestMapping(value="/cadastrar")
 	public String form() {
 		return "pessoas/formPessoas";
@@ -72,36 +84,36 @@ public class PessoasController {
 			contaPessoas contas = cr.findByLogin(conta.getLogin());
 			HttpSession session=request.getSession();
 			session.setAttribute("usuario",contas.getId());
-	        
-			ModelAndView mv = new ModelAndView("pgiCliente");
-//			contaPessoas contas = cr.findByLogin(conta.getLogin());
-			mv.addObject("contaLogado",contas);
+			if(contas.getNivel() == 3) {
+				ModelAndView mv = new ModelAndView("pgiCliente");
+				mv.addObject("contaLogado",contas);
+				
+				return mv;
+			}else if(contas.getNivel() == 2) {
+				ModelAndView mv = new ModelAndView("pgiMotorista");
+				Iterable<cadastroDeProdutos> listaDeProdutos = cpr.findAll();
+				mv.addObject("contaLogado",contas);				
+				mv.addObject("listaDeProdutos", listaDeProdutos);
+				
+				return mv;
+			}else if(contas.getNivel() == 4) {
+				ModelAndView mv = new ModelAndView("pgiMotorista");
+				mv.addObject("contaLogado",contas);
+				
+				return mv;
+			}else {
+				ModelAndView mv = new ModelAndView("pgiCliente");
+				mv.addObject("contaLogado",contas);				
+				
+				return mv;
+			}			
 			
-			return mv;
 		}else {
 			return null;
 		}
 		
 		
 	}
-	
-	
-	
-	@RequestMapping("/pontoA")
-	public String pontoA() {
-		return "pessoas/formPontoA";
-	}
-	
-	@RequestMapping("/pontoB")
-	public String pontoB() {
-		return "pessoas/formPontoB";
-	}
-	
-//	@RequestMapping("/index")
-//	public String index() {
-//		return "pessoas/index";
-//	}
-	
 	
 	
 	@RequestMapping(value="/cadastrar", method=RequestMethod.POST)
@@ -111,6 +123,7 @@ public class PessoasController {
 		localizacao.setCadastro(pessoas);
 		lr.save(localizacao);
 		conta.setCadastro(pessoas);
+		conta.setNivel(1);
 		cr.save(conta);
 		
 		return "homeMercurio";

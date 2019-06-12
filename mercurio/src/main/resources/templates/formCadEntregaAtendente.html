@@ -83,12 +83,12 @@
                     
 					
 					<div class="md-form form-lg" style="margin-bottom: 0px;">
-                        <input name="tituloEndColeta" type="text" id="tituloEndColeta" class="form-control form-control-lg"">
-                        <label for="tituloEndColeta">Título do Endereço de Coleta</label>
+                        <input name="nomeContato" type="text" id="nomeContato" class="form-control form-control-lg"">
+                        <label for="nomeContato">Nome do Contato de Coleta</label>
                     </div>
 					 <div class="md-form form-lg">
                         <input name="celular" type="text" id="celularContatoColeta" class="form-control form-control-lg">
-                        <label for="celularContatoColeta">Contato Celular/Telefone</label>
+                        <label for="celularContatoColeta"> Celular/Telefone</label>
                     </div>
                  <div class="md-form form-lg" style="margin-bottom: 0px;">
                         <input name="cepColeta" type="text" id="cepColeta" class="form-control form-control-lg" onblur="pesquisacep(this.value)">
@@ -141,9 +141,9 @@
                 <div class="col-sm">
                     <h5>Ponto de Entrega</h5>
                     
-					<div class="md-form form-lg" style="margin-bottom: 0px;">
-                        <input name="tituloEndColeta" type="text" id="tituloEndColeta" class="form-control form-control-lg"">
-                        <label for="tituloEndColeta">Título do Endereço de Entrega</label>
+				<div class="md-form form-lg" style="margin-bottom: 0px;">
+                        <input name="nomeContatoE" type="text" id="nomeContatoE" class="form-control form-control-lg"">
+                        <label for="nomeContatoE">Nome do Contato de Entrega</label>
                     </div>
 					 <div class="md-form form-lg">
                         <input name="celular" type="text" id="celularContatoEntrega" class="form-control form-control-lg">
@@ -198,6 +198,10 @@
                 <div class="col-sm">
                     <h5>Produto</h5>
                     <div class="md-form form-lg">
+                        <input name="tipoprod" type="text" id="tipoprod" class="form-control form-control-lg">
+                        <label for="tipoprod">Tipo de Produto: Caixa/Envelope/Eletronico</label>
+                    </div>
+					<div class="md-form form-lg">
                         <input name="pesoprod" type="text" id="pesoprod" class="form-control form-control-lg">
                         <label for="pesoprod">Peso</label>
                     </div>

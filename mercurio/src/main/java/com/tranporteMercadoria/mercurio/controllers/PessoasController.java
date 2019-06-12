@@ -185,13 +185,26 @@ public class PessoasController {
 	}
 	
 	@RequestMapping(value="/relEntregas")
-	public String form2() {
-		return "relEntregas";
+	public ModelAndView form2(HttpServletRequest request,cadastroPessoas pessoas) {
+		HttpSession httpSession = request.getSession(false);
+		Long idDoUsuarioLogado = (Long) httpSession.getAttribute("usuario");
+		contaPessoas conta = cr.findById(idDoUsuarioLogado);
+		ModelAndView mv = new ModelAndView("relEntregas");
+		mv.addObject("contaLogado",conta);
+		return mv;
+		
 	}
 	
 	@RequestMapping(value="/relFuncionarios")
-	public String form3() {
-		return "relFuncionarios";
+	public ModelAndView relFuncionarios(HttpServletRequest request,cadastroPessoas pessoas) {
+		HttpSession httpSession = request.getSession(false);
+		Long idDoUsuarioLogado = (Long) httpSession.getAttribute("usuario");
+		contaPessoas conta = cr.findById(idDoUsuarioLogado);
+		ModelAndView mv = new ModelAndView("relFuncionarios");
+		mv.addObject("contaLogado",conta);
+		Iterable<cadastroPessoas> listaPessoas = pr.findAll();
+		mv.addObject("listaPessoas",listaPessoas);
+		return mv;
 	}
 	
 	@RequestMapping(value="/relatorioCliente")

@@ -9,6 +9,6 @@ public interface CadProdutoRepository extends JpaRepository <cadastroDeProdutos,
 
 	cadastroDeProdutos findById(long id);
 	
-//	Iterable<cadastroDeProdutos> findByProdutos(contaPessoas conta);
+	Iterable<cadastroDeProdutos> findByConta(contaPessoas conta);
 
 }

@@ -162,7 +162,7 @@ public class PessoasController {
 		contaPessoas conta = cr.findById(idDoUsuarioLogado);
 		ModelAndView mv = new ModelAndView("pgiCliente");
 		mv.addObject("contaLogado",conta);
-		Iterable<cadastroDeProdutos> listaDeProdutos = cpr.findAll();
+		Iterable<cadastroDeProdutos> listaDeProdutos = cpr.findByConta(conta);
 		mv.addObject("listaDeProdutosPorUsuario", listaDeProdutos);
 		
 		return mv;
@@ -282,7 +282,7 @@ public class PessoasController {
 				contaPessoas contaUsuario = cr.findById(contas.getId());
 				ModelAndView mv = new ModelAndView("pgiCliente");
 				mv.addObject("contaLogado",contas);		
-				Iterable<cadastroDeProdutos> listaDeProdutos = cpr.findAll();
+				Iterable<cadastroDeProdutos> listaDeProdutos = cpr.findByConta(contas);
 				mv.addObject("listaDeProdutosPorUsuario", listaDeProdutos);
 				return mv;
 			}			

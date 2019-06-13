@@ -44,23 +44,20 @@
 	        </a>
 	      </li>
 	     
-	      
-	      <li class="nav-item">
-	        <a class="nav-link" href="formCadEntregaAtendente.html"> <i class="fas fa-motorcycle"></i>Nova Entrega</a>
+	       <li class="nav-item">
+	        <a class="nav-link" href="cadastrarNovoProdutoAtendente"> <i class="fas fa-motorcycle"></i>Nova Entrega</a>
 	      </li>
-		       <li class="nav-item">
-	        <a class="nav-link" href="RelClientesAtendente.html"> Relatório de Clientes</a>
+	          <li class="nav-item">
+	        <a class="nav-link" href="relatorioCliente"> Relatório de Clientes</a>
 	      </li>
 			   
 	    </ul>
 		<!-- INÍCIO Botão de Sair -->
 		<form class="form-inline">
 		
-      <div class="md-form my-0">
-	  
-	  
-       <a  href="pgiAtendente.html"> Bem-vindo, Sr(a).........</a>
-      </div>
+		<div class="md-form my-0" th:each="conta : ${contaLogado}">	  
+       		<a  href="paginaInicialAtendente"> Bem-vindo, Sr(a) <span th:text="${conta.cadastro.nome}"></a>
+      	</div>
     </form>
 		<form class="form-inline">
 		

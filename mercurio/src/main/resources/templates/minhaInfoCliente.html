@@ -46,25 +46,25 @@
 	     
 	      
 	      <li class="nav-item">
-	        <a class="nav-link" href="formCadEntrega.html"> <i class="fas fa-motorcycle"></i>Nova Entrega</a>
+	        <a class="nav-link" href="cadastrarNovoProduto"> <i class="fas fa-motorcycle"></i>Nova Entrega</a>
 	      </li>
 			   
 	    </ul>
 		<!-- INÍCIO Botão de Sair -->
 		<form class="form-inline">
 		
-      <div class="md-form my-0">
-	  
-	  
-       <a  href="pgiCliente.html"> Bem-vindo, Sr(a).........</a>
-      </div>
+		 <div class="md-form my-0" th:each="conta : ${contaLogado}">	  
+	       <a  href="paginaInicialCliente"> Bem-vindo, Sr(a) <span th:text="${conta.cadastro.nome}"></a>
+	      </div>
+      				
+	      
     </form>
 		<form class="form-inline">
 		
       <div class="md-form my-0">
 	  
 	  
-         <button   type="button" class="btn btn-danger btn-sm"> <i class="fas fa-sign-out-alt"></i>Sair</button>
+         <a href="/"  type="button" class="btn btn-danger btn-sm"> <i class="fas fa-sign-out-alt"></i>Sair</a>
       </div>
     </form>
 	  <!-- FIM Botão de Sair -->
@@ -74,7 +74,7 @@
 		<div class="text-center"> <h1> Minhas Informações </h1></div>
 
 	
-    
+<form th:each="conta : ${contaLogado}">
 	<!--  Início do Grid de Resumo de Pedido -->			 
 		<div class="row d-flex justify-content-center">
 
@@ -84,28 +84,28 @@
 				<div class="card">
 					<div class="card-body">
 						<h2 class="font-weight-bold deep-orange-lighter-hover mb-3">Nome:</h2>
-						<p class="brown-lighter-hover">XAVIER XANDRE</p>
+						<p class="brown-lighter-hover"><span th:text="${conta.cadastro.nome}"></p>
 					</div>
 					<div class="card-body">
 						<h2 class="font-weight-bold deep-orange-lighter-hover mb-3">CPF:</h2>
-						<p class="brown-lighter-hover">XXX.XXX.XXX-XX</p>
+						<p class="brown-lighter-hover"><span th:text="${conta.cadastro.cpf}"></p>
 					</div>
 					<div class="card-body">
 						<h2 class="font-weight-bold deep-orange-lighter-hover mb-3">Data de Nascimento:</h2>
-						<p class="brown-lighter-hover">XX/XX/XXXX</p>
+						<p class="brown-lighter-hover"><span th:text="${conta.cadastro.nascimento}"></p>
 					</div><div class="card-body">
 						<h2 class="font-weight-bold deep-orange-lighter-hover mb-3">Celular:</h2>
-						<p class="brown-lighter-hover">(xx)xxxxx-xxxx</p>
+						<p class="brown-lighter-hover"><span th:text="${conta.cadastro.celular}"></p>
 							<h2 class="font-weight-bold deep-orange-lighter-hover mb-3">Telefone:</h2>
-						<p class="brown-lighter-hover">(XX)XXXX-XXXX</p>
+						<p class="brown-lighter-hover"><span th:text="${conta.cadastro.telefone}"></p>
 					</div>
 					<div class="card-body">
 						<h2 class="font-weight-bold deep-orange-lighter-hover mb-3">E-mail:</h2>
-						<p class="brown-lighter-hover">xxx@xxx.com.br</p>
+						<p class="brown-lighter-hover"><span th:text="${conta.email}"></p>
 					</div>
 					<div class="card-body">
 						<h2 class="font-weight-bold deep-orange-lighter-hover mb-3">Senha:</h2>
-						<p class="brown-lighter-hover">*********</p>
+						<p class="brown-lighter-hover"><span th:text="${conta.senha}"></p>
 					</div>
 				
 				
@@ -118,10 +118,11 @@
               
 		</div>
         <!--  Fim do Grid de Resumo de Pedido -->		
-  <div class="text-center">
- <button class="btn btn-default btn-rounded" type="submit"><a href='altPessoas.html'>Alterar Informações </a></button>
-				  <button class="btn btn-default btn-rounded" type="submit"><a href='altSenha.html'>Alterar Senha</a></button>
-				  </div>
+ <div class="text-center">
+	 <button class="btn btn-default btn-rounded" type="submit"><a href='altPessoas.html'>Alterar Informações </a></button>
+	 <button class="btn btn-default btn-rounded" type="submit"><a href='altSenha.html'>Alterar Senha</a></button>
+ </div>
+ </form>
 <!--/.Navbar -->
 
 

@@ -154,7 +154,7 @@ public class PessoasController {
 		return mv;
 	}	
 	
-	@RequestMapping(value="paginaInicial")
+	@RequestMapping(value="paginaInicialCliente")
 	public ModelAndView pgInicial(HttpServletRequest request){
 		HttpSession httpSession = request.getSession(false);
 		Long idDoUsuarioLogado = (Long) httpSession.getAttribute("usuario");
@@ -166,6 +166,38 @@ public class PessoasController {
 		
 		return mv;
 	}
+	
+	@RequestMapping(value="paginaInicialAtendente")
+	public ModelAndView pgInicialAtendente(HttpServletRequest request){
+		HttpSession httpSession = request.getSession(false);
+		Long idDoUsuarioLogado = (Long) httpSession.getAttribute("usuario");
+		contaPessoas conta = cr.findById(idDoUsuarioLogado);
+		ModelAndView mv = new ModelAndView("pgiAtendente");
+		Iterable<cadastroDeProdutos> listaDeProdutos = cpr.findAll();
+		mv.addObject("contaLogado",conta);				
+		mv.addObject("listaDeProdutos", listaDeProdutos);
+		
+		return mv;
+		
+		
+	}
+	
+	@RequestMapping(value="paginaInicialMotorista")
+	public ModelAndView pgInicialMotorista(HttpServletRequest request){
+		HttpSession httpSession = request.getSession(false);
+		Long idDoUsuarioLogado = (Long) httpSession.getAttribute("usuario");
+		contaPessoas conta = cr.findById(idDoUsuarioLogado);
+		ModelAndView mv = new ModelAndView("pgiMotorista");
+		Iterable<cadastroDeProdutos> listaDeProdutos = cpr.findAll();
+		mv.addObject("contaLogado",conta);				
+		mv.addObject("listaDeProdutos", listaDeProdutos);
+		
+		return mv;
+		
+		
+	}
+	
+
 	
 	@RequestMapping(value="/cadastrar")
 	public String form() {
@@ -259,6 +291,16 @@ public class PessoasController {
 		}
 		
 		
+	}
+	
+	@RequestMapping(value="/exibirMinhaInformacaoCliente", method=RequestMethod.GET)
+	public ModelAndView exibirInformacao(HttpServletRequest request, cadastroPessoas pessoa) {
+		HttpSession httpSession = request.getSession(false);
+		Long idDoUsuarioLogado = (Long) httpSession.getAttribute("usuario");
+		contaPessoas conta = cr.findById(idDoUsuarioLogado);
+		ModelAndView mv = new ModelAndView("minhaInfoCliente");
+		mv.addObject("contaLogado",conta);
+		return mv;
 	}
 	
 

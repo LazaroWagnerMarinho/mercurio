@@ -46,11 +46,9 @@
 		<!-- INÍCIO Botão de Sair -->
 		<form class="form-inline">
 		
-      <div class="md-form my-0">
-	  
-	  
-       <a  href="pgiCliente.html"> Bem-vindo, Sr(a).........</a>
-      </div>
+	      <div class="md-form my-0" th:each="conta : ${contaLogado}">	  
+	       <a  href="paginaInicialCliente"> Bem-vindo, Sr(a) <span th:text="${conta.cadastro.nome}"></a>
+	      </div>
     </form>
 		<form class="form-inline">
 		
@@ -66,7 +64,7 @@
 
     <div class="container-fluid">        
        
-        <form method="post">
+        <form method="post" action="/alterarCliente">
         <div class="row d-flex justify-content-center">
                
                <!-- Grid column -->
@@ -95,26 +93,15 @@
 						<h2 class="font-weight-bold deep-orange-lighter-hover mb-3">E-mail:</h2>
 						<input name="email" type="text" id="email" class="form-control">
 					</div>
-					
-				
-				
-				
 				</div>
-
-
-					
-			</div>
-              
+			</div>  
 		</div>
         <!--  Fim do Grid de Resumo de Pedido -->		
-  <div class="text-center">
- 
-				  
-				  <button class="btn btn-default btn-rounded" type="submit">Salvar Alterações</button>
-				  <button class="btn btn-danger btn-rounded" onclick="limpar()">Cancelar</button>
-				  </div>
+  				<div class="text-center">
+				<button class="waves-effect waves-light btn entrar" type="submit">Salvar Alterações</button>
+				<button class="btn btn-danger btn-rounded" onclick="limpar()">Cancelar</button>
+			</div>
                
-            </div>
         </form>
     </div>	
     

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tranporteMercadoria.mercurio.models.alterarSenha;
 import com.tranporteMercadoria.mercurio.models.cadastroDeProdutoRealizado;
 import com.tranporteMercadoria.mercurio.models.cadastroDeProdutos;
 import com.tranporteMercadoria.mercurio.models.cadastroPessoas;
@@ -303,6 +304,69 @@ public class PessoasController {
 		return mv;
 	}
 	
+	@RequestMapping(value="/exibirMinhaInformacaoMotorista", method=RequestMethod.GET)
+	public ModelAndView exibirInformacaoMotorista(HttpServletRequest request, cadastroPessoas pessoa) {
+		HttpSession httpSession = request.getSession(false);
+		Long idDoUsuarioLogado = (Long) httpSession.getAttribute("usuario");
+		contaPessoas conta = cr.findById(idDoUsuarioLogado);
+		ModelAndView mv = new ModelAndView("minhaInfoMotorista");
+		mv.addObject("contaLogado",conta);
+		return mv;
+	}
+	
+	@RequestMapping(value="/alterarInformacaoCliente", method=RequestMethod.GET)
+	public ModelAndView alterarInformacao(HttpServletRequest request, cadastroPessoas pessoa) {
+		HttpSession httpSession = request.getSession(false);
+		Long idDoUsuarioLogado = (Long) httpSession.getAttribute("usuario");
+		contaPessoas conta = cr.findById(idDoUsuarioLogado);
+		ModelAndView mv = new ModelAndView("altPessoas");
+		mv.addObject("contaLogado",conta);
+		return mv;
+	}
+	
+	@RequestMapping(value="/alterarCliente", method=RequestMethod.POST)
+	public String alterarCliente(HttpServletRequest request, cadastroPessoas pessoas, contaPessoas contas) {
+		HttpSession httpSession = request.getSession(false);
+		Long idDoUsuarioLogado = (Long) httpSession.getAttribute("usuario");
+		contaPessoas conta = cr.findById(idDoUsuarioLogado);
+		conta.getCadastro().setNome(pessoas.getNome());
+		conta.getCadastro().setCpf(pessoas.getCpf());
+		conta.getCadastro().setNascimento(pessoas.getNascimento());
+		conta.getCadastro().setCelular(pessoas.getCelular());
+		conta.getCadastro().setTelefone(pessoas.getTelefone());
+		
+		conta.setEmail(contas.getEmail());
+		cr.save(conta);
+		
+		
+		return "pgiCliente";
+	}
+	
+	@RequestMapping(value="/altSenha", method=RequestMethod.GET)
+	public ModelAndView altSenha(HttpServletRequest request, cadastroPessoas pessoa) {
+		HttpSession httpSession = request.getSession(false);
+		Long idDoUsuarioLogado = (Long) httpSession.getAttribute("usuario");
+		contaPessoas conta = cr.findById(idDoUsuarioLogado);
+		ModelAndView mv = new ModelAndView("altSenha");
+		mv.addObject("contaLogado",conta);
+		return mv;
+	}
+	
+	@RequestMapping(value="/alterarSenha", method=RequestMethod.POST)
+	public String alterarMotorista(HttpServletRequest request, cadastroPessoas pessoas, contaPessoas contas, alterarSenha senhanova) {
+		HttpSession httpSession = request.getSession(false);
+		Long idDoUsuarioLogado = (Long) httpSession.getAttribute("usuario");
+		contaPessoas conta = cr.findById(idDoUsuarioLogado);
+		if(conta.getSenha().equals(senhanova.getSenhaAtual())) {
+				if(senhanova.getSenhaNova().equals(senhanova.getConfirmandosenhaNova())) {
+					conta.setSenha(senhanova.getSenhaNova());
+					conta.setSenhaconfirma(senhanova.getConfirmandosenhaNova());
+					cr.save(conta);
+				}
+		}
+		return "pgiCliente";
+	}	
+	
 
 	@RequestMapping(value="/cadastrar", method=RequestMethod.POST)
 	public String form(cadastroPessoas pessoas, localizacaoPessoas localizacao, contaPessoas conta) {
@@ -332,6 +396,7 @@ public class PessoasController {
 		mv.addObject("listaInformacoes",listaDeProdutos);
 		return mv;
 	}
+	
 	
 	private boolean confirmarAssinatura(contaPessoas conta) {
 		contaPessoas contas = cr.findByLogin(conta.getLogin());

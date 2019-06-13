@@ -43,11 +43,9 @@
 		<!-- INÍCIO Botão de Sair -->
 		<form class="form-inline">
 		
-      <div class="md-form my-0">
-	  
-	  
-       <a  href="pgiMotorista.html"> Bem-vindo, Sr(a).........</a>
-      </div>
+		 <div class="md-form my-0" th:each="conta : ${contaLogado}">	  
+	       <a  href="paginaInicialMotorista"> Bem-vindo, Sr(a) <span th:text="${conta.cadastro.nome}"></a>
+	      </div>
     </form>
 		<form class="form-inline">
 		
@@ -62,48 +60,31 @@
 	</nav>
     <div class="container-fluid">        
       
-        <form method="post">
-          
+<form method="post" action="/alterarSenhaMotorista">
 		  <div class="row d-flex justify-content-center">
-               
                <!-- Grid column -->
 			<div class="col-lg-4 col-md-12 mb-4">
-
 				<div class="card">
 					<div class="card-body">
 						 <h2 class="font-weight-bold deep-orange-lighter-hover mb-3">Senha Atual:</h2>
 						 <input name="senhaAtual" type="password" id="senhaAtual" class="form-control form-control-lg">
-                        
 					</div>
 					<div class="card-body">
 						<h2 class="font-weight-bold deep-orange-lighter-hover mb-3">Senha Nova:</h2>
-						 <input name="senha" type="password" id="senha" class="form-control">
+						 <input name="senhaNova" type="password" id="senha" class="form-control">
 					</div>
-					
 					<div class="card-body">
 						<h2 class="font-weight-bold deep-orange-lighter-hover mb-3">Confirmar Senha:</h2>
-						 <input name="senhaconfirma" type="password" id="senhaconfirma" class="form-control form-control-lg">
+						 <input name="confirmandosenhaNova" type="password" id="senhaconfirma" class="form-control form-control-lg">
 					</div>
-					
-				
-				
-				
 				</div>
-
-
-					
 			</div>
-              
 		</div>
-
- <div class="text-center">
-				       
-				        	<button class="btn btn-danger btn-rounded" onclick="limpar()">Cancelar</button>
-				        
-				    	    <button class="btn btn-default btn-rounded" type="submit">Confirmar</button>
-				      
-				      </div>
-    
+		 <div class="text-center">
+		   	<button class="btn btn-danger btn-rounded" onclick="limpar()">Cancelar</button>
+		    <button class="btn btn-default btn-rounded" type="submit">Confirmar</button>
+		 </div>
+</form>    
     	<!-- JQuery -->
   <script type="text/javascript" src="MDB/js/jquery-3.3.1.min.js"></script>
   <!-- Bootstrap tooltips -->

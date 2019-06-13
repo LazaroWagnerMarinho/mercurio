@@ -314,6 +314,16 @@ public class PessoasController {
 		return mv;
 	}
 	
+	@RequestMapping(value="/exibirMinhaInformacaoAtendente", method=RequestMethod.GET)
+	public ModelAndView exibirMinhaInformacaoAtendente(HttpServletRequest request, cadastroPessoas pessoa) {
+		HttpSession httpSession = request.getSession(false);
+		Long idDoUsuarioLogado = (Long) httpSession.getAttribute("usuario");
+		contaPessoas conta = cr.findById(idDoUsuarioLogado);
+		ModelAndView mv = new ModelAndView("minhaInfoAtendente");
+		mv.addObject("contaLogado",conta);
+		return mv;
+	}
+	
 	@RequestMapping(value="/alterarInformacaoCliente", method=RequestMethod.GET)
 	public ModelAndView alterarInformacao(HttpServletRequest request, cadastroPessoas pessoa) {
 		HttpSession httpSession = request.getSession(false);
@@ -365,7 +375,57 @@ public class PessoasController {
 				}
 		}
 		return "pgiCliente";
-	}	
+	}
+	
+	@RequestMapping(value="/altSenhaAtd", method=RequestMethod.GET)
+	public ModelAndView altSenhaAtd(HttpServletRequest request, cadastroPessoas pessoa) {
+		HttpSession httpSession = request.getSession(false);
+		Long idDoUsuarioLogado = (Long) httpSession.getAttribute("usuario");
+		contaPessoas conta = cr.findById(idDoUsuarioLogado);
+		ModelAndView mv = new ModelAndView("altSenhaAtendente");
+		mv.addObject("contaLogado",conta);
+		return mv;
+	}
+	
+	@RequestMapping(value="/alterarSenhaAtd", method=RequestMethod.POST)
+	public String alterarSenhaAtd(HttpServletRequest request, cadastroPessoas pessoas, contaPessoas contas, alterarSenha senhanova) {
+		HttpSession httpSession = request.getSession(false);
+		Long idDoUsuarioLogado = (Long) httpSession.getAttribute("usuario");
+		contaPessoas conta = cr.findById(idDoUsuarioLogado);
+		if(conta.getSenha().equals(senhanova.getSenhaAtual())) {
+				if(senhanova.getSenhaNova().equals(senhanova.getConfirmandosenhaNova())) {
+					conta.setSenha(senhanova.getSenhaNova());
+					conta.setSenhaconfirma(senhanova.getConfirmandosenhaNova());
+					cr.save(conta);
+				}
+		}
+		return "pgiAtendente";
+	}
+	
+	@RequestMapping(value="/altSenhaMotorista", method=RequestMethod.GET)
+	public ModelAndView altSenhaMotorista(HttpServletRequest request, cadastroPessoas pessoa) {
+		HttpSession httpSession = request.getSession(false);
+		Long idDoUsuarioLogado = (Long) httpSession.getAttribute("usuario");
+		contaPessoas conta = cr.findById(idDoUsuarioLogado);
+		ModelAndView mv = new ModelAndView("altSenhaMotorista");
+		mv.addObject("contaLogado",conta);
+		return mv;
+	}
+	
+	@RequestMapping(value="/alterarSenhaMotorista", method=RequestMethod.POST)
+	public String alterarMotoristaMotorista(HttpServletRequest request, cadastroPessoas pessoas, contaPessoas contas, alterarSenha senhanova) {
+		HttpSession httpSession = request.getSession(false);
+		Long idDoUsuarioLogado = (Long) httpSession.getAttribute("usuario");
+		contaPessoas conta = cr.findById(idDoUsuarioLogado);
+		if(conta.getSenha().equals(senhanova.getSenhaAtual())) {
+				if(senhanova.getSenhaNova().equals(senhanova.getConfirmandosenhaNova())) {
+					conta.setSenha(senhanova.getSenhaNova());
+					conta.setSenhaconfirma(senhanova.getConfirmandosenhaNova());
+					cr.save(conta);
+				}
+		}
+		return "pgiMotorista";
+	}
 	
 
 	@RequestMapping(value="/cadastrar", method=RequestMethod.POST)
